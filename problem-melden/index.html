@@ -1,0 +1,88 @@
+<!DOCTYPE html><html lang="de" data-astro-cid-sckkx6r4> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="Melden Sie hier Probleme zu Ihrer Lernerfahrung."><title>Problem melden</title><style>body{background:#e0ecf8;color:#1a1717;margin:0;padding:0;font-family:Arial,sans-serif}header[data-astro-cid-sckkx6r4]{display:flex;justify-content:flex-start;align-items:center;background:#19192f;padding:1rem;color:#000;box-shadow:0 2px 4px #0000001a}header[data-astro-cid-sckkx6r4] .logo[data-astro-cid-sckkx6r4]{font-size:26px;margin:auto;font-weight:700;color:#f1f1f1}.options-bar[data-astro-cid-sckkx6r4]{background:#19192f;padding:.5rem 0;width:100%;display:flex;justify-content:center;gap:1rem;margin:0;border-radius:0;box-shadow:0 2px 4px #0000001a}.options-bar[data-astro-cid-sckkx6r4] a[data-astro-cid-sckkx6r4]{padding:.5rem 1rem;background:linear-gradient(to right,#f8d7da,#f8edeb);color:#000;border:none;border-radius:8px;text-decoration:none;font-size:14px;transition:background .3s ease,transform .3s ease,box-shadow .3s ease}.options-bar[data-astro-cid-sckkx6r4] a[data-astro-cid-sckkx6r4]:hover{background:linear-gradient(to right,#d5abaf,#f5e4e6);transform:translateY(-2px)}.options-bar[data-astro-cid-sckkx6r4] a[data-astro-cid-sckkx6r4]:active{transform:translateY(0)}.options-bar[data-astro-cid-sckkx6r4] a[data-astro-cid-sckkx6r4]:focus{outline:2px solid #000;outline-offset:2px}footer[data-astro-cid-sckkx6r4]{background:snow;color:#0a0909;padding:.1rem;text-align:center;position:fixed;bottom:0;width:100%}main[data-astro-cid-sckkx6r4]{padding:2rem;max-width:2000px;margin:auto;border-radius:0}
+main[data-astro-cid-6yp2h2xe]{margin:auto;padding:2rem;width:100%;max-width:800px;background:#fff;border-radius:15px;color:#333;text-align:center;box-shadow:0 4px 8px #0000001a;position:relative;font-family:Helvetica Neue,sans-serif}h1[data-astro-cid-6yp2h2xe]{margin-bottom:2rem;font-size:32px;font-weight:700;color:#333;border-bottom:2px solid #eee;padding-bottom:1rem}form[data-astro-cid-6yp2h2xe]{display:flex;flex-direction:column;gap:1.5rem}select[data-astro-cid-6yp2h2xe],textarea[data-astro-cid-6yp2h2xe]{padding:1rem;border-radius:10px;border:1px solid #ccc;background:#f9f9f9;color:#333;font-size:16px;transition:border-color .3s ease,box-shadow .3s ease}select[data-astro-cid-6yp2h2xe]:focus,textarea[data-astro-cid-6yp2h2xe]:focus{border-color:#2e6f18;box-shadow:0 0 5px #2e6f187f;outline:none}button[data-astro-cid-6yp2h2xe]{padding:.75rem;background:linear-gradient(to right,#2e6f18,#a8ffea);color:#fff;border:none;border-radius:10px;cursor:pointer;transition:background .3s ease,transform .3s ease;font-size:16px;font-weight:700}button[data-astro-cid-6yp2h2xe]:hover{background:#2e6f18;transform:translateY(-2px)}#back-button[data-astro-cid-6yp2h2xe]{position:absolute;bottom:-.7rem;right:0;display:flex;align-items:center;gap:.5rem;padding:.5rem 1rem;background:linear-gradient(to right,#e7eee7,#0d0606);color:#333;border:none;border-radius:8px;box-shadow:0 2px 4px #0000001a;cursor:pointer;transition:background .3s ease,transform .3s ease;font-size:14px}#back-button[data-astro-cid-6yp2h2xe]:hover{background:#91be82;transform:translateY(-2px)}#back-button[data-astro-cid-6yp2h2xe] svg[data-astro-cid-6yp2h2xe]{fill:currentcolor}
+</style></head> <body data-astro-cid-sckkx6r4> <header data-astro-cid-sckkx6r4> <div class="logo" data-astro-cid-sckkx6r4>feedbacksystem</div> </header> <div class="options-bar" data-astro-cid-sckkx6r4>  </div> <main data-astro-cid-sckkx6r4>  <main data-astro-cid-6yp2h2xe> <h1 data-astro-cid-6yp2h2xe>Problem melden</h1> <form id="problem-form" data-astro-cid-6yp2h2xe> <!-- Auswahlfeld für die Kategorie --> <label for="problem-category" data-astro-cid-6yp2h2xe>Kategorie:</label> <select id="problem-category" required data-astro-cid-6yp2h2xe> <option value="" disabled selected data-astro-cid-6yp2h2xe>Bitte wählen Sie eine Kategorie</option> <option value="Technisches Problem" data-astro-cid-6yp2h2xe>Technisches Problem</option> <option value="Inhaltliches Problem" data-astro-cid-6yp2h2xe>Inhaltliches Problem</option> </select> <label for="problem-subcategory" id="problem-subcategory-label" style="display: none;" data-astro-cid-6yp2h2xe>Kurs-Thema:</label> <select id="problem-subcategory" style="display: none;" required data-astro-cid-6yp2h2xe> <!-- Optionen für Sub-Kategorien für Kurse werden hier dynamisch hinzugefügt --> </select> <label for="problem-message" data-astro-cid-6yp2h2xe>Ihre Nachricht:</label> <textarea id="problem-message" rows="5" placeholder="Ihr Problem" required data-astro-cid-6yp2h2xe></textarea> <label for="problem-identity" data-astro-cid-6yp2h2xe> <input type="checkbox" id="problem-identity" data-astro-cid-6yp2h2xe>
+Als Benutzer identifizieren
+</label> <button type="submit" data-astro-cid-6yp2h2xe>Problem melden</button> </form> <!-- Der "Zurück zur Seite" Button als Pfeil --> <button id="back-button" data-astro-cid-6yp2h2xe> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24" data-astro-cid-6yp2h2xe> <path d="M14 7l-5 5 5 5V7z" data-astro-cid-6yp2h2xe></path> </svg>
+Zurück
+</button> </main>  </main> <footer data-astro-cid-sckkx6r4>
+© 2024 HTW
+</footer> </body></html> <script type="module">
+  document.addEventListener('DOMContentLoaded', () => {
+    const problemForm = document.getElementById('problem-form');
+    const problemCategorySelect = document.getElementById('problem-category');
+    const problemSubcategorySelect = document.getElementById('problem-subcategory');
+    const problemSubcategoryLabel = document.getElementById('problem-subcategory-label');
+    const problemMessageInput = document.getElementById('problem-message');
+    const problemIdentityCheckbox = document.getElementById('problem-identity');
+    const backButton = document.getElementById('back-button');
+
+    problemCategorySelect.addEventListener('change', () => {
+      const selectedCategory = problemCategorySelect.value;
+
+      if (selectedCategory === 'Technisches Problem') {
+        problemSubcategoryLabel.style.display = 'block';
+        problemSubcategorySelect.style.display = 'block';
+        problemSubcategorySelect.innerHTML = `
+          <option value="" disabled selected>Bitte wählen Sie ein technisches Problem</option>
+          <option value="Website funktioniert nicht">Website funktioniert nicht</option>
+          <option value="Fehler bei der Anmeldung">Fehler bei der Anmeldung</option>
+          <option value="Sonstiges technisches Problem">Sonstiges technisches Problem</option>
+        `;
+      } else if (selectedCategory === 'Inhaltliches Problem') {
+        problemSubcategoryLabel.style.display = 'block';
+        problemSubcategorySelect.style.display = 'block';
+        problemSubcategorySelect.innerHTML = `
+          <option value="" disabled selected>Bitte wählen Sie ein inhaltliches Problem</option>
+          <option value="Falsche Informationen">Falsche Informationen</option>
+          <option value="Unklare Erklärungen">Unklare Erklärungen</option>
+          <option value="Sonstiges inhaltliches Problem">Sonstiges inhaltliches Problem</option>
+        `;
+      } else {
+        problemSubcategoryLabel.style.display = 'none';
+        problemSubcategorySelect.style.display = 'none';
+        problemSubcategorySelect.innerHTML = '';
+      }
+    });
+
+    problemForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const category = problemCategorySelect.value;
+      const subcategory = problemSubcategorySelect.value || '';
+      const message = problemMessageInput.value;
+      const isIdentified = problemIdentityCheckbox.checked;
+
+      let username = isIdentified ? prompt('Bitte geben Sie Ihren Benutzernamen ein:') : 'Anonym';
+      if (isIdentified && !username) {
+        alert('Bitte geben Sie einen Benutzernamen ein.');
+        return;
+      }
+
+      let title = category;
+      if (subcategory) {
+        title += `: ${subcategory}`;
+      }
+
+      let problemMessages = JSON.parse(localStorage.getItem('messages') || '[]');
+      problemMessages.push({
+        id: Date.now(),
+        type: 'Problem',
+        title,
+        message,
+        username,
+        replies: []
+      });
+      localStorage.setItem('messages', JSON.stringify(problemMessages));
+      problemMessageInput.value = '';
+      problemCategorySelect.value = '';
+      problemSubcategorySelect.innerHTML = '';
+      problemSubcategoryLabel.style.display = 'none';
+      problemSubcategorySelect.style.display = 'none';
+      alert('Problem wurde gemeldet!');
+    });
+
+    // Zurück-Button Logik
+    backButton.addEventListener('click', () => {
+      window.history.back();  // Gehe zur vorherigen Seite
+    });
+  });
+</script> 

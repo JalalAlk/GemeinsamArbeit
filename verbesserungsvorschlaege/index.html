@@ -1,0 +1,100 @@
+<!DOCTYPE html><html lang="de" data-astro-cid-sckkx6r4> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="Geben Sie hier Ihre Verbesserungsvorschläge an der Hochschule ab."><title>Verbesserungsvorschläge</title><style>body{background:#e0ecf8;color:#1a1717;margin:0;padding:0;font-family:Arial,sans-serif}header[data-astro-cid-sckkx6r4]{display:flex;justify-content:flex-start;align-items:center;background:#19192f;padding:1rem;color:#000;box-shadow:0 2px 4px #0000001a}header[data-astro-cid-sckkx6r4] .logo[data-astro-cid-sckkx6r4]{font-size:26px;margin:auto;font-weight:700;color:#f1f1f1}.options-bar[data-astro-cid-sckkx6r4]{background:#19192f;padding:.5rem 0;width:100%;display:flex;justify-content:center;gap:1rem;margin:0;border-radius:0;box-shadow:0 2px 4px #0000001a}.options-bar[data-astro-cid-sckkx6r4] a[data-astro-cid-sckkx6r4]{padding:.5rem 1rem;background:linear-gradient(to right,#f8d7da,#f8edeb);color:#000;border:none;border-radius:8px;text-decoration:none;font-size:14px;transition:background .3s ease,transform .3s ease,box-shadow .3s ease}.options-bar[data-astro-cid-sckkx6r4] a[data-astro-cid-sckkx6r4]:hover{background:linear-gradient(to right,#d5abaf,#f5e4e6);transform:translateY(-2px)}.options-bar[data-astro-cid-sckkx6r4] a[data-astro-cid-sckkx6r4]:active{transform:translateY(0)}.options-bar[data-astro-cid-sckkx6r4] a[data-astro-cid-sckkx6r4]:focus{outline:2px solid #000;outline-offset:2px}footer[data-astro-cid-sckkx6r4]{background:snow;color:#0a0909;padding:.1rem;text-align:center;position:fixed;bottom:0;width:100%}main[data-astro-cid-sckkx6r4]{padding:2rem;max-width:2000px;margin:auto;border-radius:0}
+main[data-astro-cid-6et6xjn7]{margin:auto;padding:2rem;width:100%;max-width:800px;background:#fff;border-radius:15px;color:#333;text-align:center;box-shadow:0 4px 8px #0000001a;position:relative;font-family:Helvetica Neue,sans-serif}h1[data-astro-cid-6et6xjn7]{margin-bottom:2rem;font-size:32px;font-weight:700;color:#333;border-bottom:2px solid #eee;padding-bottom:1rem}form[data-astro-cid-6et6xjn7]{display:flex;flex-direction:column;gap:1.5rem}select[data-astro-cid-6et6xjn7],textarea[data-astro-cid-6et6xjn7]{padding:1rem;border-radius:10px;border:1px solid #ccc;background:#f9f9f9;color:#333;font-size:16px;transition:border-color .3s ease,box-shadow .3s ease}select[data-astro-cid-6et6xjn7]:focus,textarea[data-astro-cid-6et6xjn7]:focus{border-color:#2e6f18;box-shadow:0 0 5px #2e6f187f;outline:none}button[data-astro-cid-6et6xjn7]{padding:.75rem;background:linear-gradient(to right,#2e6f18,#a8ffea);color:#fff;border:none;border-radius:10px;cursor:pointer;transition:background .3s ease,transform .3s ease;font-size:16px;font-weight:700}button[data-astro-cid-6et6xjn7]:hover{background:#2e6f18;transform:translateY(-2px)}#back-button[data-astro-cid-6et6xjn7]{position:absolute;bottom:-.7rem;right:0;display:flex;align-items:center;gap:.5rem;padding:.5rem 1rem;background:linear-gradient(to right,#e7eee7,#0d0606);color:#333;border:none;border-radius:8px;box-shadow:0 2px 4px #0000001a;cursor:pointer;transition:background .3s ease,transform .3s ease;font-size:14px}#back-button[data-astro-cid-6et6xjn7]:hover{background:#91be82;transform:translateY(-2px)}#back-button[data-astro-cid-6et6xjn7] svg[data-astro-cid-6et6xjn7]{fill:currentcolor}
+</style></head> <body data-astro-cid-sckkx6r4> <header data-astro-cid-sckkx6r4> <div class="logo" data-astro-cid-sckkx6r4>feedbacksystem</div> </header> <div class="options-bar" data-astro-cid-sckkx6r4>  </div> <main data-astro-cid-sckkx6r4>  <main data-astro-cid-6et6xjn7> <h1 data-astro-cid-6et6xjn7>Verbesserungsvorschläge</h1> <form id="suggestion-form" data-astro-cid-6et6xjn7> <!-- Auswahlfeld für die Kategorie --> <label for="suggestion-category" data-astro-cid-6et6xjn7>Kategorie:</label> <select id="suggestion-category" required data-astro-cid-6et6xjn7> <option value="" disabled selected data-astro-cid-6et6xjn7>Bitte wählen Sie eine Kategorie</option> <option value="Vorlesung" data-astro-cid-6et6xjn7>Vorlesung</option> <option value="Seminar" data-astro-cid-6et6xjn7>Seminar</option> <option value="Übung" data-astro-cid-6et6xjn7>Übung</option> <option value="Sonstiges" data-astro-cid-6et6xjn7>Sonstiges</option> </select> <label for="suggestion-subcategory" id="suggestion-subcategory-label" style="display: none;" data-astro-cid-6et6xjn7>Unterkategorie:</label> <select id="suggestion-subcategory" style="display: none;" required data-astro-cid-6et6xjn7> <!-- Optionen für Sub-Kategorien werden hier dynamisch hinzugefügt --> </select> <label for="suggestion-message" data-astro-cid-6et6xjn7>Ihr Vorschlag:</label> <textarea id="suggestion-message" rows="5" placeholder="Ihr Verbesserungsvorschlag" required data-astro-cid-6et6xjn7></textarea> <label for="suggestion-identity" data-astro-cid-6et6xjn7> <input type="checkbox" id="suggestion-identity" data-astro-cid-6et6xjn7>
+Als Benutzer identifizieren
+</label> <button type="submit" data-astro-cid-6et6xjn7>Vorschlag senden</button> </form> <!-- Der "Zurück zur Seite" Button als Pfeil --> <button id="back-button" data-astro-cid-6et6xjn7> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24" data-astro-cid-6et6xjn7> <path d="M14 7l-5 5 5 5V7z" data-astro-cid-6et6xjn7></path> </svg>
+Zurück
+</button> </main>  </main> <footer data-astro-cid-sckkx6r4>
+© 2024 HTW
+</footer> </body></html> <script type="module">
+  document.addEventListener('DOMContentLoaded', () => {
+    const suggestionForm = document.getElementById('suggestion-form');
+    const suggestionCategorySelect = document.getElementById('suggestion-category');
+    const suggestionSubcategorySelect = document.getElementById('suggestion-subcategory');
+    const suggestionSubcategoryLabel = document.getElementById('suggestion-subcategory-label');
+    const suggestionMessageInput = document.getElementById('suggestion-message');
+    const suggestionIdentityCheckbox = document.getElementById('suggestion-identity');
+    const backButton = document.getElementById('back-button');
+
+    suggestionCategorySelect.addEventListener('change', () => {
+      const selectedCategory = suggestionCategorySelect.value;
+
+      if (selectedCategory === 'Vorlesung') {
+        suggestionSubcategoryLabel.style.display = 'block';
+        suggestionSubcategorySelect.style.display = 'block';
+        suggestionSubcategorySelect.innerHTML = `
+          <option value="" disabled selected>Bitte wählen Sie ein Thema</option>
+          <option value="Vorlesungsthemen">Vorlesungsthemen</option>
+          <option value="Dozenten">Dozenten</option>
+          <option value="Vorlesungsunterlagen">Vorlesungsunterlagen</option>
+          <option value="Prüfungen">Prüfungen</option>
+        `;
+      } else if (selectedCategory === 'Seminar') {
+        suggestionSubcategoryLabel.style.display = 'block';
+        suggestionSubcategorySelect.style.display = 'block';
+        suggestionSubcategorySelect.innerHTML = `
+          <option value="" disabled selected>Bitte wählen Sie ein Thema</option>
+          <option value="Seminarinhalte">Seminarinhalte</option>
+          <option value="Dozenten">Dozenten</option>
+          <option value="Seminarunterlagen">Seminarunterlagen</option>
+          <option value="Seminarorganisation">Seminarorganisation</option>
+        `;
+      } else if (selectedCategory === 'Übung') {
+        suggestionSubcategoryLabel.style.display = 'block';
+        suggestionSubcategorySelect.style.display = 'block';
+        suggestionSubcategorySelect.innerHTML = `
+          <option value="" disabled selected>Bitte wählen Sie ein Thema</option>
+          <option value="Übungsaufgaben">Übungsaufgaben</option>
+          <option value="Übungsdurchführung">Übungsdurchführung</option>
+          <option value="Übungsfeedback">Übungsfeedback</option>
+          <option value="Übungsmaterialien">Übungsmaterialien</option>
+        `;
+      } else if (selectedCategory === 'Sonstiges') {
+        suggestionSubcategoryLabel.style.display = 'none';
+        suggestionSubcategorySelect.style.display = 'none';
+        suggestionSubcategorySelect.innerHTML = '';
+      }
+    });
+
+    suggestionForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const category = suggestionCategorySelect.value;
+      const subcategory = suggestionSubcategorySelect.value || '';
+      const message = suggestionMessageInput.value;
+      const isIdentified = suggestionIdentityCheckbox.checked;
+
+      let username = isIdentified ? prompt('Bitte geben Sie Ihren Benutzernamen ein:') : 'Anonym';
+      if (isIdentified && !username) {
+        alert('Bitte geben Sie einen Benutzernamen ein.');
+        return;
+      }
+
+      let title = category;
+      if (category !== 'Sonstiges' && subcategory) {
+        title += `: ${subcategory}`;
+      }
+
+      let suggestionMessages = JSON.parse(localStorage.getItem('messages') || '[]');
+      suggestionMessages.push({
+        id: Date.now(),
+        type: 'Verbesserungsvorschlag',
+        title,
+        message,
+        username,
+        replies: []
+      });
+      localStorage.setItem('messages', JSON.stringify(suggestionMessages));
+      suggestionMessageInput.value = '';
+      suggestionCategorySelect.value = '';
+      suggestionSubcategorySelect.innerHTML = '';
+      suggestionSubcategoryLabel.style.display = 'none';
+      suggestionSubcategorySelect.style.display = 'none';
+      alert('Vorschlag gesendet!');
+    });
+
+    // Zurück-Button Logik
+    backButton.addEventListener('click', () => {
+      window.history.back();  // Gehe zur vorherigen Seite
+    });
+  });
+</script> 
