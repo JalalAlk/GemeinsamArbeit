@@ -1,0 +1,17 @@
+{
+    "extends": [
+     "stylelint-config-standard",
+    "stylelint-config-html/astro"
+    ],
+    "overrides": [
+      {
+        "files": ["**/*.astro"],
+        "customSyntax": "postcss-html"
+      }
+    ],
+    "rules": {
+      "block-no-empty": true,
+      "color-no-invalid-hex": true
+    }
+  }
+  

@@ -1,0 +1,61 @@
+---
+export interface Props {
+  title: string;
+}
+const { title } = Astro.props as Props;
+---
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title}</title>
+</head>
+<body>
+  <header>
+    <img src="/htw-saar.png" alt="HTW Saar ">
+    <h1>{title}</h1>
+  </header>
+  <main>
+    <slot />
+  </main>
+</body>
+</html>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0; /* Ändern Sie die Hintergrundfarbe */
+}
+
+header {
+  background-color: #333; /* Dunkle Hintergrundfarbe für den Header */
+  color: white;
+  padding: 1em 0;
+  text-align: center;
+}
+
+</style>
+<style>
+	.star-rating {
+	  display: inline-block;
+	  font-size: 1.5rem;
+	}
+	
+	.star-rating input[type="radio"] {
+	  display: none;
+	}
+	
+	.star-rating label {
+	  color: #ffd700; /* Gelbe Farbe für die Sterne */
+	  font-size: 2rem;
+	  cursor: pointer; /* Zeige an, dass der Cursor klickbar ist */
+	}
+	
+	.star-rating input[type="radio"]:checked ~ label {
+	  color: #f39c12; /* Farbe für ausgewählte Sterne ändern */
+	}
+	</style>

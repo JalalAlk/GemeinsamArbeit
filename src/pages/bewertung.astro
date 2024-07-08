@@ -1,0 +1,47 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout title="Bewertung">
+    <h1>Bewertung</h1>
+    <form action="/submit-bewertung" method="post">
+      <div>
+        <label for="dozentenbewertung">Dozentenbewertung:</label>
+        <div class="star-rating">
+          <input type="radio" id="star5" name="dozentenbewertung" value="5">
+          <label for="star5">★</label>
+          <input type="radio" id="star4" name="dozentenbewertung" value="4">
+          <label for="star4">★</label>
+          <input type="radio" id="star3" name="dozentenbewertung" value="3">
+          <label for="star3">★</label>
+          <input type="radio" id="star2" name="dozentenbewertung" value="2">
+          <label for="star2">★</label>
+          <input type="radio" id="star1" name="dozentenbewertung" value="1">
+          <label for="star1">★</label>
+        </div>
+      </div>
+      
+      <div>
+        <label for="kommentar">Kommentar:</label>
+        <textarea id="kommentar" name="kommentar"></textarea>
+      </div>
+      
+      <div>
+        <label for="gruppenbewertung">Gruppenarbeitsbewertung:</label>
+        <div class="star-rating">
+          <input type="radio" id="groupStar5" name="gruppenbewertung" value="5">
+          <label for="groupStar5">★</label>
+          <input type="radio" id="groupStar4" name="gruppenbewertung" value="4">
+          <label for="groupStar4">★</label>
+          <input type="radio" id="groupStar3" name="gruppenbewertung" value="3">
+          <label for="groupStar3">★</label>
+          <input type="radio" id="groupStar2" name="gruppenbewertung" value="2">
+          <label for="groupStar2">★</label>
+          <input type="radio" id="groupStar1" name="gruppenbewertung" value="1">
+          <label for="groupStar1">★</label>
+        </div>
+      </div>
+      
+      <button type="submit">Absenden</button>
+    </form>
+  </Layout>
+  

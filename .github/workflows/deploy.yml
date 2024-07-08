@@ -1,0 +1,60 @@
+name: GitHub Pages Astro CI
+
+on:
+  push:
+    branches:
+      - main  # Trigger deployment on main branch
+  pull_request:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: true  # Fetch submodules if any
+          fetch-depth: 0    # Fetch all history
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 'lts/*'  # Set Node.js version to lts/*
+
+      - name: Install dependencies and Playwright browsers
+        run: |
+          npm install
+          npx playwright install --with-deps
+
+      - name: Run ESLint
+        run: npx eslint .
+
+      - name: Run Stylelint
+        run: npx stylelint "src/**/*.astro"
+
+      - name: Run HTMLHint
+        run: npx htmlhint "**/*.html"
+
+      - name: Run Astro Lint
+        run: npx astro lint
+
+      - name: Build and Test
+        run: |
+          npm run build
+          npm run test
+          echo "Deploying..."
+          npx astro build
+          touch dist/.nojekyll
+          ls -la dist || echo "Directory not found"
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        if: github.ref == 'refs/heads/main'
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist  # Directory to deploy
+
+      - name: Run Playwright tests
+        run: npx playwright test

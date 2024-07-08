@@ -1,0 +1,35 @@
+---
+export interface Props {
+  title: string;
+  link: string;
+}
+const { title, link } = Astro.props as Props;
+---
+<div class="card">
+  <h2>{title}</h2>
+  <a href={link}>Mehr erfahren</a>
+</div>
+
+<style>
+.card {
+  border: 1px solid #ddd;
+  padding: 1em;
+  margin: 1em 0;
+  text-align: center;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+.card h2 {
+  margin: 0 0 0.5em;
+}
+
+.card a {
+  color: #007acc;
+  text-decoration: none;
+}
+
+.card a:hover {
+  text-decoration: underline;
+}
+</style>
