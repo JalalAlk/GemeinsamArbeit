@@ -1,0 +1,200 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Lernpartner suchen" description="Suchen Sie hier nach Lernpartnern für Ihre Kurse.">
+  <main>
+    <h1>Lernpartner suchen</h1>
+    <form id="lernpartner-form">
+      <label for="lernpartner-name">Ihr Name:</label>
+      <input type="text" id="lernpartner-name" placeholder="Geben Sie Ihren Namen ein" required />
+
+      <label for="lernpartner-type">Partner-Typ:</label>
+      <select id="lernpartner-type" required>
+        <option value="" disabled selected>Bitte wählen Sie eine Option</option>
+        <option value="Einzelpartner">Einzelpartner</option>
+        <option value="Gruppe">Gruppe</option>
+      </select>
+
+      <label for="lernpartner-course">Name des Kurses:</label>
+      <input type="text" id="lernpartner-course" placeholder="Beispiel: Mathematik 3" required />
+
+      <label for="lernpartner-message">Ihre Nachricht:</label>
+      <textarea id="lernpartner-message" rows="5" placeholder="Ihr Gesuch" required></textarea>
+
+      <label for="lernpartner-date">Datum:</label>
+      <input type="text" id="lernpartner-date" readonly />
+
+      <button type="submit">Gesuch senden</button>
+    </form>
+
+    <button id="back-button">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M14 7l-5 5 5 5V7z"/>
+      </svg>
+      Zurück
+    </button>
+  </main>
+</Layout>
+
+<script type="module">
+  document.addEventListener('DOMContentLoaded', () => {
+    const lernpartnerForm = document.getElementById('lernpartner-form');
+    const lernpartnerNameInput = document.getElementById('lernpartner-name');
+    const lernpartnerTypeSelect = document.getElementById('lernpartner-type');
+    const lernpartnerCourseInput = document.getElementById('lernpartner-course');
+    const lernpartnerMessageInput = document.getElementById('lernpartner-message');
+    const lernpartnerDateInput = document.getElementById('lernpartner-date');
+    const backButton = document.getElementById('back-button');
+
+    // Setze das aktuelle Datum
+    const today = new Date().toLocaleDateString('de-DE');
+    lernpartnerDateInput.value = today;
+
+    lernpartnerForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const name = lernpartnerNameInput.value;
+      const partnerType = lernpartnerTypeSelect.value;
+      const course = lernpartnerCourseInput.value;
+      const message = lernpartnerMessageInput.value;
+
+      if (!name || !partnerType || !course || !message) {
+        alert('Bitte füllen Sie alle Felder aus.');
+        return;
+      }
+
+      let title = `${partnerType}: ${course}`;
+      let lernpartnerMessages = JSON.parse(localStorage.getItem('messages') || '[]');
+      lernpartnerMessages.push({
+        id: Date.now(),
+        type: 'Lernpartner',
+        title,
+        message,
+        name,
+        date: today,
+        course,
+        partnerType,
+        replies: []
+      });
+      localStorage.setItem('messages', JSON.stringify(lernpartnerMessages));
+      lernpartnerMessageInput.value = '';
+      lernpartnerCourseInput.value = '';
+      lernpartnerTypeSelect.value = '';
+      lernpartnerDateInput.value = today;
+      alert('Gesuch gesendet!');
+    });
+
+    backButton.addEventListener('click', () => {
+      window.history.back();
+    });
+  });
+</script>
+<style>
+    main {
+      margin: auto;
+      padding: 2rem;
+      width: 100%;
+      max-width: 600px;
+      background: #fff;
+      border-radius: 12px;
+      color: #333;
+      text-align: center;
+      box-shadow: 0 4px 12px rgb(0 0 0 / 15%);
+      font-family: Arial, sans-serif;
+    }
+  
+    h1 {
+      margin-bottom: 2rem;
+      font-size: 28px;
+      font-weight: bold;
+      color: #2e6f18;
+      border-bottom: 2px solid #e0e0e0;
+      padding-bottom: 1rem;
+    }
+  
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+  
+    label {
+      font-size: 16px;
+      color: #555;
+      margin-bottom: 0.5rem;
+      text-align: left;
+    }
+  
+    input[type="text"],
+    select,
+    textarea {
+      padding: 1rem;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+      background: #f9f9f9;
+      color: #333;
+      font-size: 16px;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+  
+    select,
+    input[type="text"] {
+      height: 2.5rem;
+    }
+  
+    textarea {
+      resize: none;
+    }
+  
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: #2e6f18;
+      box-shadow: 0 0 8px rgb(46 111 24 / 30%);
+      outline: none;
+    }
+  
+    button {
+      padding: 0.75rem;
+      background: linear-gradient(to right, #2e6f18, #a8ffea);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.3s ease;
+      font-size: 16px;
+      font-weight: bold;
+    }
+  
+    button:hover {
+      background: #2e6f18;
+      transform: translateY(-2px);
+    }
+  
+    #back-button {
+      position: absolute;
+      bottom: -0.7rem;
+      right: 0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: linear-gradient(to right, #e7eee7, #0d0606);
+      color: #333;
+      border: none;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.3s ease;
+      font-size: 14px;
+    }
+  
+    #back-button:hover {
+      background: #91be82;
+      transform: translateY(-2px);
+    }
+  
+    #back-button svg {
+      fill: currentcolor;
+    }
+  </style>

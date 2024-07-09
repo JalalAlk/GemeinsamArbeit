@@ -1,0 +1,339 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Lernpartner anzeigen" description="Hier können Sie die gespeicherten Lernpartner-Nachrichten anzeigen, darauf antworten, suchen oder alle Nachrichten löschen.">
+  <main>
+    <div class="button-container">
+      <button class="filter-button" data-type="Lernpartner">Lernpartner anzeigen</button>
+      <button id="search-button">Suchen</button>
+      <button id="clear-button">Leeren</button>
+    </div>
+    <div id="search-container" class="hidden">
+      <input type="text" id="search-input" placeholder="Suchbegriff eingeben..." />
+    </div>
+    <div id="responses-container">
+      <ul id="responses"></ul>
+    </div>
+    <button id="back-button">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M14 7l-5 5 5 5V7z"/>
+      </svg>
+      Zurück
+    </button>
+  </main>
+</Layout>
+
+<script type="module">
+  document.addEventListener('DOMContentLoaded', function() {
+    const responsesContainer = document.getElementById('responses');
+    const filterButton = document.querySelector('.filter-button');
+    const searchButton = document.getElementById('search-button');
+    const clearButton = document.getElementById('clear-button');
+    const searchContainer = document.getElementById('search-container');
+    const searchInput = document.getElementById('search-input');
+    let messages = JSON.parse(localStorage.getItem('messages')) || [];
+    let filteredMessages = [];
+
+    filterButton.addEventListener('click', () => {
+      const type = filterButton.getAttribute('data-type');
+      displayMessages(type);
+    });
+
+    searchButton.addEventListener('click', () => {
+      searchContainer.classList.toggle('hidden');
+      searchInput.focus();
+    });
+
+    searchInput.addEventListener('input', () => {
+      const searchTerm = searchInput.value.toLowerCase();
+      filteredMessages = messages.filter(msg =>
+        msg.message.toLowerCase().includes(searchTerm) || 
+        msg.name.toLowerCase().includes(searchTerm) ||
+        msg.course.toLowerCase().includes(searchTerm)
+      );
+      displayMessages('Lernpartner');
+    });
+
+    clearButton.addEventListener('click', () => {
+      if (confirm('Sind Sie sicher, dass Sie alle Nachrichten löschen möchten?')) {
+        messages = [];
+        localStorage.setItem('messages', JSON.stringify(messages));
+        displayMessages('Lernpartner');
+        alert('Alle Nachrichten wurden gelöscht!');
+      }
+    });
+
+    function displayMessages(type) {
+      responsesContainer.innerHTML = '';
+      const messagesToDisplay = filteredMessages.length > 0 ? filteredMessages : messages.filter(msg => msg.type === type);
+
+      if (messagesToDisplay.length === 0) {
+        responsesContainer.innerHTML = '<li class="no-messages">Keine Nachrichten vorhanden.</li>';
+      } else {
+        messagesToDisplay.forEach((msg) => {
+          const messageItem = document.createElement('li');
+          messageItem.className = 'message-item';
+
+          const messageDiv = document.createElement('div');
+          messageDiv.className = 'message';
+
+          // Titel der Nachricht anzeigen
+          const messageTitle = document.createElement('h2');
+          messageTitle.textContent = `Suche nach ${msg.partnerType}: ${msg.course}`;
+          messageDiv.appendChild(messageTitle);
+
+          const messageContent = document.createElement('p');
+          messageContent.textContent = msg.message;
+          messageDiv.appendChild(messageContent);
+
+          const messageAuthor = document.createElement('p');
+          messageAuthor.textContent = `Von: ${msg.name}`;
+          messageDiv.appendChild(messageAuthor);
+
+          const messageDate = document.createElement('span');
+          messageDate.textContent = `Datum: ${msg.date}`;
+          messageDiv.appendChild(messageDate);
+
+          // Replies anzeigen
+          if (msg.replies && msg.replies.length > 0) {
+            const repliesDiv = document.createElement('div');
+            repliesDiv.className = 'replies';
+            msg.replies.forEach(reply => {
+              const replyDiv = document.createElement('div');
+              replyDiv.className = 'reply';
+              replyDiv.innerHTML = `<strong>${reply.author} antwortet:</strong><p>${reply.text}</p>`;
+              repliesDiv.appendChild(replyDiv);
+            });
+            messageDiv.appendChild(repliesDiv);
+          }
+
+          // Buttons für Antwort, Löschen und Interessiert hinzufügen
+          const buttonContainer = document.createElement('div');
+          buttonContainer.className = 'button-container1';
+
+          const replyButton = document.createElement('button');
+          replyButton.textContent = 'Antworten';
+          replyButton.className = 'reply-button';
+          replyButton.onclick = function() {
+            const replyAuthor = prompt('Ihr Name:');
+            const replyText = prompt('Ihre Antwort:');
+            if (replyAuthor && replyText) {
+              if (!msg.replies) {
+                msg.replies = [];
+              }
+              msg.replies.push({ text: replyText, author: replyAuthor });
+              localStorage.setItem('messages', JSON.stringify(messages));
+              displayMessages(type);  // Nur Lernpartner-Nachrichten anzeigen
+              alert('Antwort wurde gespeichert!');
+            }
+          };
+          buttonContainer.appendChild(replyButton);
+
+          const deleteButton = document.createElement('button');
+          deleteButton.className = 'delete-button';
+          deleteButton.textContent = 'Löschen';
+          deleteButton.onclick = function() {
+            if (confirm('Sind Sie sicher, dass Sie diese Nachricht löschen möchten?')) {
+              messages = messages.filter(m => m.id !== msg.id); 
+              localStorage.setItem('messages', JSON.stringify(messages)); 
+              displayMessages(type);  // Nur Lernpartner-Nachrichten anzeigen
+              alert('Nachricht wurde gelöscht!');
+            }
+          };
+          buttonContainer.appendChild(deleteButton);
+
+          const interestedButton = document.createElement('button');
+          interestedButton.className = 'interested-button';
+          interestedButton.textContent = 'Interessiert';
+          interestedButton.onclick = function() {
+            alert('Sie haben Interesse an diesem Lernpartner gezeigt!');
+          };
+          buttonContainer.appendChild(interestedButton);
+
+          messageDiv.appendChild(buttonContainer);
+          messageItem.appendChild(messageDiv);
+          responsesContainer.appendChild(messageItem);
+        });
+      }
+    }
+
+    const backButton = document.getElementById('back-button');
+    backButton.addEventListener('click', () => {
+      window.history.back();  
+    });
+
+    // Initiale Anzeige von Lernpartner-Nachrichten
+    displayMessages('Lernpartner');
+  });
+</script>
+
+<style>
+  main {
+    margin: auto;
+    padding: 1rem;
+    width: 100%;
+    max-width: 900px;
+    color: #060606;
+    font-size: 16px;
+    line-height: 1.5;
+    position: relative;
+    background-color: #f4f6f9; /* Hintergrundfarbe für die Seite */
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+    gap: 1rem;
+  }
+
+  .filter-button, #search-button, #clear-button {
+    display: inline-block;
+    padding: 0.75rem 1.25rem;
+    color: #070606;
+    text-decoration: none;
+    background: linear-gradient(to right, rgb(235 239 253), rgb(219 247 248));
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgb(179 173 173 / 10%);
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+
+  .filter-button:hover, #search-button:hover, #clear-button:hover {
+    background: rgb(254 255 255);
+  }
+
+  #search-container {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  #search-input {
+    padding: 0.5rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    width: 100%;
+    max-width: 300px;
+  }
+
+  #search-container.hidden {
+    display: none;
+  }
+
+  #responses-container {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 0.5rem;
+    background: #f9f9f9;
+    max-height: 500px;
+    overflow-y: auto;
+  }
+
+  #responses {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .message-item {
+    border-bottom: 1px solid rgb(0 0 0 / 10%);
+    padding: 0.5rem;
+  }
+
+  .message-item:last-child {
+    border-bottom: none;
+  }
+
+  .message {
+    padding: 1rem;
+    border-radius: 8px;
+    background: #fff;
+    margin-bottom: 0.5rem;
+  }
+
+  .replies {
+    margin-top: 0.5rem;
+  }
+
+  .reply {
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #f0f0f0;
+  }
+
+  .button-container1 {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: flex-start;
+    gap: 0.5rem;
+  }
+
+  .reply-button, .delete-button, .interested-button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    cursor: pointer;
+  }
+
+  .reply-button {
+    background: linear-gradient(to right, rgb(209 234 236), rgb(169 204 204));
+    color: #070606;
+  }
+
+  .reply-button:hover {
+    background: #117a8b;
+  }
+
+  .delete-button {
+    background: #f44;
+    color: #fff;
+  }
+
+  .delete-button:hover {
+    background: #d33;
+  }
+
+  .interested-button {
+    background: linear-gradient(to right, rgb(209 234 236), rgb(169 204 204));
+    color: #070606;
+  }
+
+  .interested-button:hover {
+    background: #117a8b;
+  }
+
+  .no-messages {
+    color: #777;
+    font-style: italic;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  #back-button {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: linear-gradient(to right, rgb(231 238 231), rgb(13 6 6));
+    color: hsl(0deg 7% 3%);
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+
+  #back-button:hover {
+    background: rgb(133 130 190);
+    transform: translateY(-2px);
+  }
+
+  #back-button svg {
+    fill: currentcolor;
+  }
+</style>
