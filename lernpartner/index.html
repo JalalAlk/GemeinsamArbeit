@@ -1,0 +1,57 @@
+<!DOCTYPE html><html lang="de"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="Suchen Sie hier nach Lernpartnern für Ihre Kurse."><title>Lernpartner suchen</title><link rel="stylesheet" href="/styles.css"><link rel="icon" href="/favicon.svg"><style>main[data-astro-cid-rclcz7sy]{margin:auto;padding:2rem;width:100%;max-width:600px;background:#fff;border-radius:12px;color:#333;text-align:center;box-shadow:0 4px 12px #00000026;font-family:Arial,sans-serif}h1[data-astro-cid-rclcz7sy]{margin-bottom:2rem;font-size:28px;font-weight:700;color:#2e6f18;border-bottom:2px solid #e0e0e0;padding-bottom:1rem}form[data-astro-cid-rclcz7sy]{display:flex;flex-direction:column;gap:1.5rem}label[data-astro-cid-rclcz7sy]{font-size:16px;color:#555;margin-bottom:.5rem;text-align:left}input[data-astro-cid-rclcz7sy][type=text],select[data-astro-cid-rclcz7sy],textarea[data-astro-cid-rclcz7sy]{padding:1rem;border-radius:10px;border:1px solid #ddd;background:#f9f9f9;color:#333;font-size:16px;transition:border-color .3s ease,box-shadow .3s ease}select[data-astro-cid-rclcz7sy],input[data-astro-cid-rclcz7sy][type=text]{height:2.5rem}textarea[data-astro-cid-rclcz7sy]{resize:none}input[data-astro-cid-rclcz7sy]:focus,select[data-astro-cid-rclcz7sy]:focus,textarea[data-astro-cid-rclcz7sy]:focus{border-color:#2e6f18;box-shadow:0 0 8px #2e6f184d;outline:none}button[data-astro-cid-rclcz7sy]{padding:.75rem;background:linear-gradient(to right,#2e6f18,#a8ffea);color:#fff;border:none;border-radius:10px;cursor:pointer;transition:background .3s ease,transform .3s ease;font-size:16px;font-weight:700}button[data-astro-cid-rclcz7sy]:hover{background:#2e6f18;transform:translateY(-2px)}#back-button[data-astro-cid-rclcz7sy]{position:absolute;bottom:-.7rem;right:0;display:flex;align-items:center;gap:.5rem;padding:.5rem 1rem;background:linear-gradient(to right,#e7eee7,#0d0606);color:#333;border:none;border-radius:8px;box-shadow:0 2px 4px #0000001a;cursor:pointer;transition:background .3s ease,transform .3s ease;font-size:14px}#back-button[data-astro-cid-rclcz7sy]:hover{background:#91be82;transform:translateY(-2px)}#back-button[data-astro-cid-rclcz7sy] svg[data-astro-cid-rclcz7sy]{fill:currentcolor}
+</style></head> <body> <header> <div class="logo">Feedback System</div> </header> <!-- Options Bar hinzugefügt --> <div class="options-bar"> <a href="/lernpartner" class="button-lernpartner">Lernpartner</a> <a href="/nachrichten">Mein Nachrichten</a> <a href="/antworten">Antworten</a> </div> <main>  <main data-astro-cid-rclcz7sy> <h1 data-astro-cid-rclcz7sy>Lernpartner suchen</h1> <form id="lernpartner-form" data-astro-cid-rclcz7sy> <label for="lernpartner-name" data-astro-cid-rclcz7sy>Ihr Name:</label> <input type="text" id="lernpartner-name" placeholder="Geben Sie Ihren Namen ein" required data-astro-cid-rclcz7sy> <label for="lernpartner-type" data-astro-cid-rclcz7sy>Partner-Typ:</label> <select id="lernpartner-type" required data-astro-cid-rclcz7sy> <option value="" disabled selected data-astro-cid-rclcz7sy>Bitte wählen Sie eine Option</option> <option value="Einzelpartner" data-astro-cid-rclcz7sy>Einzelpartner</option> <option value="Gruppe" data-astro-cid-rclcz7sy>Gruppe</option> </select> <label for="lernpartner-course" data-astro-cid-rclcz7sy>Name des Kurses:</label> <input type="text" id="lernpartner-course" placeholder="Beispiel: Mathematik 3" required data-astro-cid-rclcz7sy> <label for="lernpartner-message" data-astro-cid-rclcz7sy>Ihre Nachricht:</label> <textarea id="lernpartner-message" rows="5" placeholder="Ihr Gesuch" required data-astro-cid-rclcz7sy></textarea> <label for="lernpartner-date" data-astro-cid-rclcz7sy>Datum:</label> <input type="text" id="lernpartner-date" readonly data-astro-cid-rclcz7sy> <button type="submit" data-astro-cid-rclcz7sy>Gesuch senden</button> </form> <button id="back-button" data-astro-cid-rclcz7sy> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24" data-astro-cid-rclcz7sy> <path d="M14 7l-5 5 5 5V7z" data-astro-cid-rclcz7sy></path> </svg>
+Zurück
+</button> </main>  </main> <footer>
+© 2024 HTW
+</footer> </body></html> <script type="module">
+  document.addEventListener('DOMContentLoaded', () => {
+    const lernpartnerForm = document.getElementById('lernpartner-form');
+    const lernpartnerNameInput = document.getElementById('lernpartner-name');
+    const lernpartnerTypeSelect = document.getElementById('lernpartner-type');
+    const lernpartnerCourseInput = document.getElementById('lernpartner-course');
+    const lernpartnerMessageInput = document.getElementById('lernpartner-message');
+    const lernpartnerDateInput = document.getElementById('lernpartner-date');
+    const backButton = document.getElementById('back-button');
+
+    // Setze das aktuelle Datum
+    const today = new Date().toLocaleDateString('de-DE');
+    lernpartnerDateInput.value = today;
+
+    lernpartnerForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const name = lernpartnerNameInput.value;
+      const partnerType = lernpartnerTypeSelect.value;
+      const course = lernpartnerCourseInput.value;
+      const message = lernpartnerMessageInput.value;
+
+      if (!name || !partnerType || !course || !message) {
+        alert('Bitte füllen Sie alle Felder aus.');
+        return;
+      }
+
+      let title = `${partnerType}: ${course}`;
+      let lernpartnerMessages = JSON.parse(localStorage.getItem('messages') || '[]');
+      lernpartnerMessages.push({
+        id: Date.now(),
+        type: 'Lernpartner',
+        title,
+        message,
+        name,
+        date: today,
+        course,
+        partnerType,
+        replies: []
+      });
+      localStorage.setItem('messages', JSON.stringify(lernpartnerMessages));
+      lernpartnerMessageInput.value = '';
+      lernpartnerCourseInput.value = '';
+      lernpartnerTypeSelect.value = '';
+      lernpartnerDateInput.value = today;
+      alert('Gesuch gesendet!');
+    });
+
+    backButton.addEventListener('click', () => {
+      window.history.back();
+    });
+  });
+</script> 

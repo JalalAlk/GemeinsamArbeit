@@ -1,0 +1,91 @@
+<!DOCTYPE html><html lang="de"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description"><title>Mein Nachrichten</title><link rel="stylesheet" href="/styles.css"><link rel="icon" href="/favicon.svg"><style>:root{--background-main: #f4f6f9;--text-dark: #333;--button-background: #007BFF;--button-hover: #0056b3;--button-text: #fff;--main-background: #fff;--header-bg: #fff;--footer-bg: #f4f6f9;--message-background: #fff;--message-border: #ddd;--reply-background: #f4f4f4;--reply-border: #ddd;--delete-button-background: #dc3545;--delete-button-hover: #c82333;--reply-button-background: #28a745;--reply-button-hover: #218838;--back-button-background: #007BFF;--back-button-hover: #0056b3;--search-background: #f0f0f0;--search-border: #ddd}body{background:var(--background-main);color:var(--text-dark);font-family:Arial,sans-serif;margin:0;padding:0}header[data-astro-cid-4yubrpvl]{background:var(--header-bg);padding:1rem;color:var(--text-dark);text-align:center;box-shadow:0 2px 4px #0000001a}header[data-astro-cid-4yubrpvl] h1[data-astro-cid-4yubrpvl]{margin:0;font-size:24px}nav[data-astro-cid-4yubrpvl] a[data-astro-cid-4yubrpvl]{color:var(--button-background);text-decoration:none;margin:0 .5rem}main[data-astro-cid-4yubrpvl]{padding:1.5rem;width:100%;max-width:600px;color:#0b0b0b;font-size:16px;line-height:1.6;position:relative;background:var(--main-background);border-radius:12px;box-shadow:0 6px 12px #0000001a;margin:2rem auto}#button-container[data-astro-cid-4yubrpvl]{display:flex;justify-content:space-between;margin-bottom:1rem}#search-container[data-astro-cid-4yubrpvl]{display:flex;justify-content:center;margin-bottom:1rem}#search-container[data-astro-cid-4yubrpvl].hidden{display:none}#search-input[data-astro-cid-4yubrpvl]{padding:.5rem;border-radius:8px;border:1px solid var(--search-border);background:var(--search-background);font-size:16px;width:100%;max-width:300px}#messages-container[data-astro-cid-4yubrpvl]{border:none;background:var(--main-background);padding:1rem;max-height:500px;overflow-y:auto}.message[data-astro-cid-4yubrpvl]{margin-bottom:1rem;padding:1rem;border-radius:8px;background:var(--message-background);border:1px solid var(--message-border);box-shadow:0 2px 4px #0000001a}.message[data-astro-cid-4yubrpvl]:last-child{margin-bottom:0}.replies[data-astro-cid-4yubrpvl]{margin-top:1rem;padding-left:1rem;border-left:2px solid var(--message-border)}.reply[data-astro-cid-4yubrpvl]{margin-top:.5rem;padding:.5rem;border-radius:8px;background:var(--reply-background);border:1px solid var(--reply-border)}.reply[data-astro-cid-4yubrpvl] strong[data-astro-cid-4yubrpvl]{color:var(--text-dark)}.reply-button[data-astro-cid-4yubrpvl],.delete-button[data-astro-cid-4yubrpvl],#search-button[data-astro-cid-4yubrpvl],#clear-button[data-astro-cid-4yubrpvl]{padding:.75rem 1.5rem;border:none;border-radius:8px;font-size:1rem;cursor:pointer;transition:background .3s ease}.reply-button[data-astro-cid-4yubrpvl]{background:var(--reply-button-background);color:var(--button-text)}.reply-button[data-astro-cid-4yubrpvl]:hover{background:var(--reply-button-hover)}.delete-button[data-astro-cid-4yubrpvl]{background:var(--delete-button-background);color:var(--button-text)}.delete-button[data-astro-cid-4yubrpvl]:hover{background:var(--delete-button-hover)}#search-button[data-astro-cid-4yubrpvl]{background:var(--button-background);color:var(--button-text)}#search-button[data-astro-cid-4yubrpvl]:hover{background:var(--button-hover)}#clear-button[data-astro-cid-4yubrpvl]{background:var(--delete-button-background);color:var(--button-text)}#clear-button[data-astro-cid-4yubrpvl]:hover{background:var(--delete-button-hover)}#back-button[data-astro-cid-4yubrpvl]{position:absolute;bottom:1rem;right:1rem;display:flex;align-items:center;gap:.5rem;padding:.5rem 1rem;background:var(--back-button-background);color:var(--button-text);border:none;border-radius:8px;box-shadow:0 2px 4px #0000001a;cursor:pointer;transition:background .3s ease,transform .3s ease}#back-button[data-astro-cid-4yubrpvl]:hover{background:var(--back-button-hover)}#back-button[data-astro-cid-4yubrpvl] svg[data-astro-cid-4yubrpvl]{fill:currentcolor}
+</style></head> <body> <header> <div class="logo">Feedback System</div> </header> <!-- Options Bar hinzugefügt --> <div class="options-bar"> <a href="/lernpartner" class="button-lernpartner">Lernpartner</a> <a href="/nachrichten">Mein Nachrichten</a> <a href="/antworten">Antworten</a> </div> <main>  <main data-astro-cid-4yubrpvl> <h1 data-astro-cid-4yubrpvl>Meine Nachrichten</h1> <div id="button-container" data-astro-cid-4yubrpvl> <button id="search-button" data-astro-cid-4yubrpvl>Suchen</button> <button id="clear-button" data-astro-cid-4yubrpvl>Leeren</button> </div> <div id="search-container" class="hidden" data-astro-cid-4yubrpvl> <input type="text" id="search-input" placeholder="Suchbegriff eingeben" data-astro-cid-4yubrpvl> </div> <div id="messages-container" data-astro-cid-4yubrpvl> <div id="messages" data-astro-cid-4yubrpvl></div> </div> <button id="back-button" data-astro-cid-4yubrpvl> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24" data-astro-cid-4yubrpvl> <path d="M14 7l-5 5 5 5V7z" data-astro-cid-4yubrpvl></path> </svg>
+Zurück
+</button> </main>  </main> <footer>
+© 2024 HTW
+</footer> </body></html> <script type="module">
+  document.addEventListener('DOMContentLoaded', function() {
+    let messages = JSON.parse(localStorage.getItem('messages')) || [];
+    const messagesContainer = document.getElementById('messages');
+    const messagesContainerWrapper = document.getElementById('messages-container');
+    const backButton = document.getElementById('back-button');
+    const clearButton = document.getElementById('clear-button');
+    const searchButton = document.getElementById('search-button');
+    const searchContainer = document.getElementById('search-container');
+    const searchInput = document.getElementById('search-input');
+
+    // Funktion zum Rendern der Nachrichten
+    function renderMessages(filteredMessages = messages) {
+      if (!messagesContainer) return; // Sicherheitsüberprüfung
+
+      messagesContainer.innerHTML = '';
+
+      filteredMessages.forEach((msg, index) => {
+        const messageEl = document.createElement('div');
+        messageEl.classList.add('message');
+        messageEl.innerHTML = `
+          <p><strong>${msg.title}</strong></p>
+          <p><strong>${msg.username || 'Anonym'}:</strong> ${msg.message}</p>
+          <p><strong>Typ:</strong> ${msg.type}</p>
+          <p><strong>Datum:</strong> ${msg.date}</p>
+          <div class="replies">
+            ${msg.replies ? msg.replies.map(reply => `<div class="reply"><strong>${reply.username || 'Anonym'}:</strong> ${reply.message}</div>`).join('') : ''}
+          </div>
+        `;
+
+        messagesContainer.appendChild(messageEl);
+      });
+
+      // Scrollen zum neuesten Eintrag
+      messagesContainerWrapper.scrollTop = messagesContainerWrapper.scrollHeight;
+
+      // Speichern der Nachrichten in localStorage
+      localStorage.setItem('messages', JSON.stringify(messages));
+    }
+
+    // Filter für die Suchfunktion
+    function filterMessages(query) {
+      return messages.filter(msg =>
+        msg.title.toLowerCase().includes(query.toLowerCase()) ||
+        msg.message.toLowerCase().includes(query.toLowerCase())
+      );
+    }
+
+    // Such-Button Funktion
+    if (searchButton) {
+      searchButton.addEventListener('click', () => {
+        searchContainer.classList.toggle('hidden');
+      });
+    }
+
+    // Eingabefeld für die Suchfunktion
+    if (searchInput) {
+      searchInput.addEventListener('input', () => {
+        const query = searchInput.value;
+        const filteredMessages = filterMessages(query);
+        renderMessages(filteredMessages);
+      });
+    }
+
+    // Leeren-Button Funktion
+    if (clearButton) {
+      clearButton.addEventListener('click', () => {
+        if (confirm('Sind Sie sicher, dass Sie alle Nachrichten löschen möchten?')) {
+          localStorage.removeItem('messages');
+          messages = [];
+          renderMessages();
+          alert('Alle Nachrichten wurden gelöscht!');
+        }
+      });
+    }
+
+    // Zurück-Button Funktion
+    if (backButton) {
+      backButton.addEventListener('click', () => {
+        window.history.back();  // Gehe zur vorherigen Seite
+      });
+    }
+
+    renderMessages();
+  });
+</script> 
