@@ -86,12 +86,11 @@ import Layout from '../layouts/Layout.astro';
     }
   });
   
-  // Setze das aktuelle Datum als Standardwert und Mindestdatum
+  
   const today = new Date().toISOString().split('T')[0];
   lernpartnerDateInput.value = today;
   lernpartnerDateInput.min = today;
 
-  // Funktion zum Aktualisieren der Mindestzeit basierend auf dem ausgewählten Datum
   function updateMinTime() {
     const selectedDate = lernpartnerDateInput.value;
     const currentDate = new Date().toISOString().split('T')[0];
@@ -105,23 +104,19 @@ import Layout from '../layouts/Layout.astro';
     }
   }
 
-  // Funktion zum Deaktivieren/Aktivieren der Zeit- und Datum-Eingaben
   function toggleDateTimeInputs(disabled) {
     lernpartnerDateInput.disabled = disabled;
     lernpartnerTimeInput.disabled = disabled;
   }
 
-  // Event Listener für Änderungen am Checkbox-Feld
   disableTimeCheckbox.addEventListener('change', () => {
     const disabled = disableTimeCheckbox.checked;
     toggleDateTimeInputs(disabled);
 
-    // Wenn deaktiviert, setze die Werte auf leere Zeichenfolgen
     if (disabled) {
       lernpartnerDateInput.value = '';
       lernpartnerTimeInput.value = '';
     } else {
-      // Wenn aktiviert, setze das aktuelle Datum und die aktuelle Zeit als Standardwert
       lernpartnerDateInput.value = today;
       const now = new Date();
       const currentTime = now.toLocaleTimeString('it-IT', { hour: '2-digit', minute: '2-digit' });
@@ -130,16 +125,13 @@ import Layout from '../layouts/Layout.astro';
     }
   });
 
-  // Event Listener für Änderungen am Datum-Feld
   lernpartnerDateInput.addEventListener('change', updateMinTime);
 
-   // Prüfe, ob gespeicherte Zeit vorhanden ist und setze sie gegebenenfalls
    const savedTime = localStorage.getItem('savedTime');
     if (savedTime) {
       lernpartnerTimeInput.value = savedTime;
     }
 
-  // Setze die Initialwerte für Datum und Zeit
   const now = new Date();
   const currentTime = now.toLocaleTimeString('it-IT', { hour: '2-digit', minute: '2-digit' });
   lernpartnerTimeInput.value = currentTime;
@@ -153,7 +145,7 @@ import Layout from '../layouts/Layout.astro';
     const message = lernpartnerMessageInput.value.trim();
     const date = disableTimeCheckbox.checked ? '' : lernpartnerDateInput.value;
     const time = disableTimeCheckbox.checked ? '' : lernpartnerTimeInput.value;
-    const groupSize = anzahlPersonenSelect.value; // Anzahl der Personen auswählen
+    const groupSize = anzahlPersonenSelect.value;
 
 
     if (!name || !partnerType || !course || !message || (!date && !disableTimeCheckbox.checked)) {
@@ -173,12 +165,11 @@ import Layout from '../layouts/Layout.astro';
       time: disableTimeCheckbox.checked ? 'Nicht angegeben' : time,
       course,
       partnerType,
-      groupSize, // Hier wird die Anzahl der Personen zur Nachricht hinzugefügt
+      groupSize, 
       replies: []
     });
     localStorage.setItem('messages', JSON.stringify(lernpartnerMessages));
 
-    // Setze das Formular zurück
     lernpartnerForm.reset();
     lernpartnerDateInput.value = today;
     lernpartnerTimeInput.value = currentTime;

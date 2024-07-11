@@ -47,14 +47,12 @@ import Layout from '../layouts/Layout.astro';
       );
     }
 
-    // Such-Button Funktion
     if (searchButton) {
       searchButton.addEventListener('click', () => {
         searchContainer.classList.toggle('hidden');
       });
     }
 
-    // Eingabefeld für die Suchfunktion
     if (searchInput) {
       searchInput.addEventListener('input', () => {
         const query = searchInput.value;
@@ -63,7 +61,6 @@ import Layout from '../layouts/Layout.astro';
       });
     }
 
-    // Clear Button Funktion
     if (clearButton) {
       clearButton.addEventListener('click', () => {
         localStorage.removeItem('messages');
@@ -74,17 +71,17 @@ import Layout from '../layouts/Layout.astro';
     }
 
     showAllButton.addEventListener('click', () => {
-      displayMessages(); // Show all messages
+      displayMessages(); 
     });
 
     function displayMessages(type) {
       responsesContainer.innerHTML = '';
 
       if (!type) {
-        // No type specified, show all messages
+        
         filteredMessages = messages;
       } else {
-        // Filter messages based on type
+        
         filteredMessages = messages.filter(msg => msg.type === type);
       }
 
@@ -98,7 +95,7 @@ import Layout from '../layouts/Layout.astro';
           const messageDiv = document.createElement('div');
           messageDiv.className = 'message';
 
-          // Display message details
+          
           const messageTitle = document.createElement('h2');
           messageTitle.textContent = `Suche nach ${msg.partnerType}: ${msg.course}`;
           messageDiv.appendChild(messageTitle);
@@ -115,14 +112,14 @@ import Layout from '../layouts/Layout.astro';
           messageDate.textContent = `Wann: ${msg.date}, Uhrzeit: ${msg.time}`;
           messageDiv.appendChild(messageDate);
 
-          // Display group size if available
+          
           if (msg.groupSize) {
             const groupSize = document.createElement('p');
             groupSize.textContent = `Gruppe Größe: ${msg.groupSize}`;
             messageDiv.appendChild(groupSize);
           }
 
-          // Display replies if any
+          
           if (msg.replies && msg.replies.length > 0) {
             const repliesDiv = document.createElement('div');
             repliesDiv.className = 'replies';
@@ -135,7 +132,7 @@ import Layout from '../layouts/Layout.astro';
             messageDiv.appendChild(repliesDiv);
           }
 
-          // Buttons for reply and interested
+          
           const buttonContainer = document.createElement('div');
           buttonContainer.className = 'button-container1';
 
@@ -151,7 +148,7 @@ import Layout from '../layouts/Layout.astro';
               }
               msg.replies.push({ text: replyText, author: replyAuthor });
               localStorage.setItem('messages', JSON.stringify(messages));
-              displayMessages(type);  // Display messages of the selected type only
+              displayMessages(type);  
               alert('Antwort wurde gespeichert!');
             }
           };
@@ -192,7 +189,7 @@ import Layout from '../layouts/Layout.astro';
           const messageDiv = document.createElement('div');
           messageDiv.className = 'message';
 
-          // Display message details
+         
           const messageTitle = document.createElement('h2');
           messageTitle.textContent = `Suche nach ${msg.partnerType}: ${msg.course}`;
           messageDiv.appendChild(messageTitle);
@@ -209,14 +206,14 @@ import Layout from '../layouts/Layout.astro';
           messageDate.textContent = `Wann: ${msg.date}, Uhrzeit: ${msg.time}`;
           messageDiv.appendChild(messageDate);
 
-          // Display group size if available
+          
           if (msg.groupSize) {
             const groupSize = document.createElement('p');
             groupSize.textContent = `Anzahl der Personen in der Gruppe: ${msg.groupSize}`;
             messageDiv.appendChild(groupSize);
           }
 
-          // Display replies if any
+          
           if (msg.replies && msg.replies.length > 0) {
             const repliesDiv = document.createElement('div');
             repliesDiv.className = 'replies';
@@ -229,7 +226,7 @@ import Layout from '../layouts/Layout.astro';
             messageDiv.appendChild(repliesDiv);
           }
 
-          // Buttons for reply and interested
+          
           const buttonContainer = document.createElement('div');
           buttonContainer.className = 'button-container1';
 
@@ -266,7 +263,7 @@ import Layout from '../layouts/Layout.astro';
       }
     }
 
-    // Initial display of messages
+    
     displayMessages();
   });
 </script>
