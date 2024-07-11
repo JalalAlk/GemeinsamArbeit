@@ -1,63 +1,82 @@
-<!DOCTYPE html><html lang="de"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="Hier können Sie die gespeicherten Lernpartner-Nachrichten anzeigen, darauf antworten, suchen oder alle Nachrichten löschen."><title>Lernpartner anzeigen</title><link rel="stylesheet" href="/styles.css"><link rel="icon" href="/favicon.svg"><style>main[data-astro-cid-jay3qgqs]{margin:auto;padding:1rem;width:100%;max-width:900px;color:#060606;font-size:16px;line-height:1.5;position:relative;background-color:#f4f6f9}.button-container[data-astro-cid-jay3qgqs]{display:flex;justify-content:center;margin-bottom:1rem;gap:1rem}.filter-button[data-astro-cid-jay3qgqs],#search-button[data-astro-cid-jay3qgqs],#clear-button[data-astro-cid-jay3qgqs]{display:inline-block;padding:.75rem 1.25rem;color:#070606;text-decoration:none;background:linear-gradient(to right,#ebeffd,#dbf7f8);border-radius:8px;box-shadow:0 2px 4px #b3adad1a;transition:background .3s ease,transform .3s ease}.filter-button[data-astro-cid-jay3qgqs]:hover,#search-button[data-astro-cid-jay3qgqs]:hover,#clear-button[data-astro-cid-jay3qgqs]:hover{background:#feffff}#search-container[data-astro-cid-jay3qgqs]{text-align:center;margin-bottom:1rem}#search-input[data-astro-cid-jay3qgqs]{padding:.5rem;border-radius:8px;border:1px solid #ccc;width:100%;max-width:300px}#search-container[data-astro-cid-jay3qgqs].hidden{display:none}#responses-container[data-astro-cid-jay3qgqs]{border:1px solid #ddd;border-radius:8px;padding:.5rem;background:#f9f9f9;max-height:500px;overflow-y:auto}#responses[data-astro-cid-jay3qgqs]{list-style-type:none;padding:0;margin:0}.message-item[data-astro-cid-jay3qgqs]{border-bottom:1px solid rgb(0 0 0 / 10%);padding:.5rem}.message-item[data-astro-cid-jay3qgqs]:last-child{border-bottom:none}.message[data-astro-cid-jay3qgqs]{padding:1rem;border-radius:8px;background:#fff;margin-bottom:.5rem}.replies[data-astro-cid-jay3qgqs]{margin-top:.5rem}.reply[data-astro-cid-jay3qgqs]{padding:.5rem;border:1px solid #ddd;border-radius:8px;background:#f0f0f0}.button-container1[data-astro-cid-jay3qgqs]{margin-top:1rem;display:flex;justify-content:flex-start;gap:.5rem}.reply-button[data-astro-cid-jay3qgqs],.delete-button[data-astro-cid-jay3qgqs],.interested-button[data-astro-cid-jay3qgqs]{padding:.5rem 1rem;border:none;border-radius:8px;font-size:.875rem;cursor:pointer}.reply-button[data-astro-cid-jay3qgqs]{background:linear-gradient(to right,#d1eaec,#a9cccc);color:#070606}.reply-button[data-astro-cid-jay3qgqs]:hover{background:#117a8b}.delete-button[data-astro-cid-jay3qgqs]{background:#f44;color:#fff}.delete-button[data-astro-cid-jay3qgqs]:hover{background:#d33}.interested-button[data-astro-cid-jay3qgqs]{background:linear-gradient(to right,#d1eaec,#a9cccc);color:#070606}.interested-button[data-astro-cid-jay3qgqs]:hover{background:#117a8b}.no-messages[data-astro-cid-jay3qgqs]{color:#777;font-style:italic;text-align:center;padding:1rem}#back-button[data-astro-cid-jay3qgqs]{position:absolute;bottom:1rem;right:1rem;display:flex;align-items:center;gap:.5rem;padding:.5rem 1rem;background:linear-gradient(to right,#e7eee7,#0d0606);color:#080707;border:none;border-radius:8px;box-shadow:0 2px 4px #0000001a;cursor:pointer;transition:background .3s ease,transform .3s ease}#back-button[data-astro-cid-jay3qgqs]:hover{background:#8582be;transform:translateY(-2px)}#back-button[data-astro-cid-jay3qgqs] svg[data-astro-cid-jay3qgqs]{fill:currentcolor}
-</style></head> <body> <header> <div class="logo">Feedback System</div> </header> <!-- Options Bar hinzugefügt --> <div class="options-bar"> <a href="/lernpartner" class="button-lernpartner">Lernpartner</a> <a href="/nachrichten">Mein Nachrichten</a> <a href="/antworten">Antworten</a> </div> <main>  <main data-astro-cid-jay3qgqs> <div class="button-container" data-astro-cid-jay3qgqs> <button class="filter-button" data-type="Lernpartner" data-astro-cid-jay3qgqs>Lernpartner anzeigen</button> <button id="search-button" data-astro-cid-jay3qgqs>Suchen</button> <button id="clear-button" data-astro-cid-jay3qgqs>Leeren</button> </div> <div id="search-container" class="hidden" data-astro-cid-jay3qgqs> <input type="text" id="search-input" placeholder="Suchbegriff eingeben..." data-astro-cid-jay3qgqs> </div> <div id="responses-container" data-astro-cid-jay3qgqs> <ul id="responses" data-astro-cid-jay3qgqs></ul> </div> <button id="back-button" data-astro-cid-jay3qgqs> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24" data-astro-cid-jay3qgqs> <path d="M14 7l-5 5 5 5V7z" data-astro-cid-jay3qgqs></path> </svg>
-Zurück
-</button> </main>  </main> <footer>
-© 2024 HTW
-</footer> </body></html> <script type="module">
+<!DOCTYPE html><html lang="de"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="Hier können Sie die gespeicherten Lernpartner-Nachrichten anzeigen, darauf antworten, suchen oder alle Nachrichten löschen."><title>Lernpartner anzeigen</title><link rel="stylesheet" href="/styles.css"><link rel="icon" href="/favicon.svg"><style>body{background:var(--background-main);color:var(--text-dark);font-family:Arial,sans-serif;margin:0;padding:0}.button-container[data-astro-cid-jay3qgqs]{display:flex;justify-content:center;margin-bottom:1rem;gap:1rem}.filter-button[data-astro-cid-jay3qgqs],.show-all-button[data-astro-cid-jay3qgqs],#search-button[data-astro-cid-jay3qgqs],#clear-button[data-astro-cid-jay3qgqs]{display:inline-block;padding:.75rem 1.25rem;color:#fff;text-decoration:none;background-color:#0064b2;border-radius:8px;transition:background .3s ease,transform .3s ease}.filter-button[data-astro-cid-jay3qgqs]:hover,.show-all-button[data-astro-cid-jay3qgqs]:hover,#search-button[data-astro-cid-jay3qgqs]:hover,#clear-button[data-astro-cid-jay3qgqs]:hover{background:#00246b}#search-container[data-astro-cid-jay3qgqs]{text-align:center;margin-bottom:1rem}#search-input[data-astro-cid-jay3qgqs]{margin-right:0;background-color:#fff;padding:.5rem;border-radius:8px;border:3px solid #00246B;color:#000;width:100%;max-width:575px}#search-container[data-astro-cid-jay3qgqs].hidden{display:none}.message-item[data-astro-cid-jay3qgqs]{border-bottom:1px solid rgb(0 0 0 / 10%);padding:.5rem}.message-item[data-astro-cid-jay3qgqs]:last-child{border-bottom:none}.message[data-astro-cid-jay3qgqs]{padding:1rem;border-radius:8px;background:#fff;margin-bottom:.5rem}.replies[data-astro-cid-jay3qgqs]{margin-top:.5rem}.reply[data-astro-cid-jay3qgqs]{padding:.5rem;border:1px solid #ddd;border-radius:8px;background:#f0f0f0;margin-top:.5rem}.button-container1[data-astro-cid-jay3qgqs]{display:flex;justify-content:space-around;margin-top:.5rem}.reply-button[data-astro-cid-jay3qgqs],.interested-button[data-astro-cid-jay3qgqs]{padding:.5rem 1rem;background-color:#00246b;color:#0064b2;border:none;border-radius:8px;cursor:pointer;transition:background .3s ease,transform .3s ease}.reply-button[data-astro-cid-jay3qgqs]:hover,.interested-button[data-astro-cid-jay3qgqs]:hover{background:#1287e0}
+</style></head> <body> <header></header> <!-- Options Bar hinzugefügt --> <div class="options-bar"> <div class="logo">GroupStudy</div> <a href="/startseite" class="button-lernpartner">StartSeite</a> <a href="/lernpartner" class="button-lernpartner">Lernpartner</a> <a href="/nachrichten">Mein Nachrichten</a> <a href="/antworten">Antworten</a> </div> <main>  <main data-astro-cid-jay3qgqs> <div class="button-container" data-astro-cid-jay3qgqs> <button class="filter-button" data-type="Gruppe" data-astro-cid-jay3qgqs>Gruppe</button> <button class="filter-button" data-type="Einzelpartner" data-astro-cid-jay3qgqs>Einzelpartner</button> <button class="show-all-button" data-astro-cid-jay3qgqs>Alle anzeigen</button> <button id="search-button" data-astro-cid-jay3qgqs>Suchen</button> <button id="clear-button" data-astro-cid-jay3qgqs>Alle löschen</button> </div> <div id="search-container" class="hidden" data-astro-cid-jay3qgqs> <input type="text" id="search-input" placeholder="Suchbegriff eingeben..." data-astro-cid-jay3qgqs> </div> <div id="responses-container" data-astro-cid-jay3qgqs> <ul id="responses" data-astro-cid-jay3qgqs></ul> </div> </main>  </main> </body></html> <script type="module">
   document.addEventListener('DOMContentLoaded', function() {
     const responsesContainer = document.getElementById('responses');
-    const filterButton = document.querySelector('.filter-button');
+    const filterButtons = document.querySelectorAll('.filter-button');
+    const showAllButton = document.querySelector('.show-all-button');
     const searchButton = document.getElementById('search-button');
-    const clearButton = document.getElementById('clear-button');
     const searchContainer = document.getElementById('search-container');
     const searchInput = document.getElementById('search-input');
+    const clearButton = document.getElementById('clear-button');
     let messages = JSON.parse(localStorage.getItem('messages')) || [];
     let filteredMessages = [];
 
-    filterButton.addEventListener('click', () => {
-      const type = filterButton.getAttribute('data-type');
-      displayMessages(type);
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const type = button.getAttribute('data-type');
+        displayMessages(type);
+      });
     });
 
-    searchButton.addEventListener('click', () => {
-      searchContainer.classList.toggle('hidden');
-      searchInput.focus();
-    });
-
-    searchInput.addEventListener('input', () => {
-      const searchTerm = searchInput.value.toLowerCase();
-      filteredMessages = messages.filter(msg =>
-        msg.message.toLowerCase().includes(searchTerm) || 
-        msg.name.toLowerCase().includes(searchTerm) ||
-        msg.course.toLowerCase().includes(searchTerm)
+    function filterMessages(query) {
+      return messages.filter(msg =>
+        msg.title.toLowerCase().includes(query.toLowerCase()) ||
+        msg.message.toLowerCase().includes(query.toLowerCase())
       );
-      displayMessages('Lernpartner');
-    });
+    }
 
-    clearButton.addEventListener('click', () => {
-      if (confirm('Sind Sie sicher, dass Sie alle Nachrichten löschen möchten?')) {
+    // Such-Button Funktion
+    if (searchButton) {
+      searchButton.addEventListener('click', () => {
+        searchContainer.classList.toggle('hidden');
+      });
+    }
+
+    // Eingabefeld für die Suchfunktion
+    if (searchInput) {
+      searchInput.addEventListener('input', () => {
+        const query = searchInput.value;
+        const filteredMessages = filterMessages(query);
+        renderMessages(filteredMessages);
+      });
+    }
+
+    // Clear Button Funktion
+    if (clearButton) {
+      clearButton.addEventListener('click', () => {
+        localStorage.removeItem('messages');
         messages = [];
-        localStorage.setItem('messages', JSON.stringify(messages));
-        displayMessages('Lernpartner');
+        displayMessages();
         alert('Alle Nachrichten wurden gelöscht!');
-      }
+      });
+    }
+
+    showAllButton.addEventListener('click', () => {
+      displayMessages(); // Show all messages
     });
 
     function displayMessages(type) {
       responsesContainer.innerHTML = '';
-      const messagesToDisplay = filteredMessages.length > 0 ? filteredMessages : messages.filter(msg => msg.type === type);
 
-      if (messagesToDisplay.length === 0) {
+      if (!type) {
+        // No type specified, show all messages
+        filteredMessages = messages;
+      } else {
+        // Filter messages based on type
+        filteredMessages = messages.filter(msg => msg.type === type);
+      }
+
+      if (filteredMessages.length === 0) {
         responsesContainer.innerHTML = '<li class="no-messages">Keine Nachrichten vorhanden.</li>';
       } else {
-        messagesToDisplay.forEach((msg) => {
+        filteredMessages.forEach((msg) => {
           const messageItem = document.createElement('li');
           messageItem.className = 'message-item';
 
           const messageDiv = document.createElement('div');
           messageDiv.className = 'message';
 
-          // Titel der Nachricht anzeigen
+          // Display message details
           const messageTitle = document.createElement('h2');
           messageTitle.textContent = `Suche nach ${msg.partnerType}: ${msg.course}`;
           messageDiv.appendChild(messageTitle);
@@ -71,10 +90,17 @@ Zurück
           messageDiv.appendChild(messageAuthor);
 
           const messageDate = document.createElement('span');
-          messageDate.textContent = `Datum: ${msg.date}`;
+          messageDate.textContent = `Wann: ${msg.date}, Uhrzeit: ${msg.time}`;
           messageDiv.appendChild(messageDate);
 
-          // Replies anzeigen
+          // Display group size if available
+          if (msg.groupSize) {
+            const groupSize = document.createElement('p');
+            groupSize.textContent = `Gruppe Größe: ${msg.groupSize}`;
+            messageDiv.appendChild(groupSize);
+          }
+
+          // Display replies if any
           if (msg.replies && msg.replies.length > 0) {
             const repliesDiv = document.createElement('div');
             repliesDiv.className = 'replies';
@@ -87,7 +113,7 @@ Zurück
             messageDiv.appendChild(repliesDiv);
           }
 
-          // Buttons für Antwort, Löschen und Interessiert hinzufügen
+          // Buttons for reply and interested
           const buttonContainer = document.createElement('div');
           buttonContainer.className = 'button-container1';
 
@@ -103,24 +129,105 @@ Zurück
               }
               msg.replies.push({ text: replyText, author: replyAuthor });
               localStorage.setItem('messages', JSON.stringify(messages));
-              displayMessages(type);  // Nur Lernpartner-Nachrichten anzeigen
+              displayMessages(type);  // Display messages of the selected type only
               alert('Antwort wurde gespeichert!');
             }
           };
           buttonContainer.appendChild(replyButton);
 
-          const deleteButton = document.createElement('button');
-          deleteButton.className = 'delete-button';
-          deleteButton.textContent = 'Löschen';
-          deleteButton.onclick = function() {
-            if (confirm('Sind Sie sicher, dass Sie diese Nachricht löschen möchten?')) {
-              messages = messages.filter(m => m.id !== msg.id); 
-              localStorage.setItem('messages', JSON.stringify(messages)); 
-              displayMessages(type);  // Nur Lernpartner-Nachrichten anzeigen
-              alert('Nachricht wurde gelöscht!');
+          const interestedButton = document.createElement('button');
+          interestedButton.className = 'interested-button';
+          interestedButton.textContent = 'Interessiert';
+          interestedButton.onclick = function() {
+            if (interestedButton.classList.contains('interested-active')) {
+              interestedButton.textContent = 'Interessiert';
+              interestedButton.classList.remove('interested-active');
+            } else {
+              interestedButton.textContent = `Du bist Für " ${msg.partnerType}: ${msg.course}" interessiert`;
+              interestedButton.classList.add('interested-active');
+              alert('Sie haben Interesse an diesem Lernpartner gezeigt!');
             }
           };
-          buttonContainer.appendChild(deleteButton);
+          buttonContainer.appendChild(interestedButton);
+
+          messageDiv.appendChild(buttonContainer);
+          messageItem.appendChild(messageDiv);
+          responsesContainer.appendChild(messageItem);
+        });
+      }
+    }
+
+    function renderMessages(messages) {
+      responsesContainer.innerHTML = '';
+
+      if (messages.length === 0) {
+        responsesContainer.innerHTML = '<li class="no-messages">Keine Nachrichten vorhanden.</li>';
+      } else {
+        messages.forEach((msg) => {
+          const messageItem = document.createElement('li');
+          messageItem.className = 'message-item';
+
+          const messageDiv = document.createElement('div');
+          messageDiv.className = 'message';
+
+          // Display message details
+          const messageTitle = document.createElement('h2');
+          messageTitle.textContent = `Suche nach ${msg.partnerType}: ${msg.course}`;
+          messageDiv.appendChild(messageTitle);
+
+          const messageContent = document.createElement('p');
+          messageContent.textContent = msg.message;
+          messageDiv.appendChild(messageContent);
+
+          const messageAuthor = document.createElement('p');
+          messageAuthor.textContent = `Von: ${msg.name}`;
+          messageDiv.appendChild(messageAuthor);
+
+          const messageDate = document.createElement('span');
+          messageDate.textContent = `Wann: ${msg.date}, Uhrzeit: ${msg.time}`;
+          messageDiv.appendChild(messageDate);
+
+          // Display group size if available
+          if (msg.groupSize) {
+            const groupSize = document.createElement('p');
+            groupSize.textContent = `Anzahl der Personen in der Gruppe: ${msg.groupSize}`;
+            messageDiv.appendChild(groupSize);
+          }
+
+          // Display replies if any
+          if (msg.replies && msg.replies.length > 0) {
+            const repliesDiv = document.createElement('div');
+            repliesDiv.className = 'replies';
+            msg.replies.forEach(reply => {
+              const replyDiv = document.createElement('div');
+              replyDiv.className = 'reply';
+              replyDiv.innerHTML = `<strong>${reply.author} antwortet:</strong><p>${reply.text}</p>`;
+              repliesDiv.appendChild(replyDiv);
+            });
+            messageDiv.appendChild(repliesDiv);
+          }
+
+          // Buttons for reply and interested
+          const buttonContainer = document.createElement('div');
+          buttonContainer.className = 'button-container1';
+
+          const replyButton = document.createElement('button');
+          replyButton.textContent = 'Antworten';
+          replyButton.className = 'reply-button';
+          replyButton.onclick = function() {
+            const replyAuthor = prompt('Ihr Name:');
+            const replyText = prompt('Ihre Antwort:');
+            if (replyAuthor && replyText) {
+              if (!msg.replies) {
+                msg.replies = [];
+              }
+              msg.replies.push({ text: replyText, author: replyAuthor });
+              localStorage.setItem('messages', JSON.stringify(messages));
+              renderMessages(messages);
+              alert('Antwort wurde gespeichert!');
+            }
+          };
+          buttonContainer.appendChild(replyButton);
 
           const interestedButton = document.createElement('button');
           interestedButton.className = 'interested-button';
@@ -137,12 +244,7 @@ Zurück
       }
     }
 
-    const backButton = document.getElementById('back-button');
-    backButton.addEventListener('click', () => {
-      window.history.back();  
-    });
-
-    // Initiale Anzeige von Lernpartner-Nachrichten
-    displayMessages('Lernpartner');
+    // Initial display of messages
+    displayMessages();
   });
 </script> 
