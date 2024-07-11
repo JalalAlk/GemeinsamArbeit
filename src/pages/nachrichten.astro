@@ -2,9 +2,9 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Mein Nachrichten">
+<Layout title="Meine Nachrichten">
   <main>
-    <h1>Meine Nachrichten</h1>
+    <h1>Meine Nachrichten:</h1>
     <div id="button-container">
       <button id="search-button">Suchen</button>
       <button id="clear-button">Leeren</button>
@@ -15,6 +15,8 @@ import Layout from '../layouts/Layout.astro';
     <div id="messages-container">
       <div id="messages"></div>
     </div>
+    <a href="/startseite" class="button-lernpartner">StartSeite</a>
+
     <button id="back-button">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
         <path d="M14 7l-5 5 5 5V7z"/>
@@ -44,15 +46,27 @@ import Layout from '../layouts/Layout.astro';
       filteredMessages.forEach((msg, index) => {
         const messageEl = document.createElement('div');
         messageEl.classList.add('message');
-        messageEl.innerHTML = `
+        messageEl.innerHTML =`
           <p><strong>${msg.title}</strong></p>
-          <p><strong>${msg.username || 'Anonym'}:</strong> ${msg.message}</p>
-          <p><strong>Typ:</strong> ${msg.type}</p>
-          <p><strong>Datum:</strong> ${msg.date}</p>
-          <div class="replies">
-            ${msg.replies ? msg.replies.map(reply => `<div class="reply"><strong>${reply.username || 'Anonym'}:</strong> ${reply.message}</div>`).join('') : ''}
-          </div>
+          <p><strong>${msg.username || 'Nachricht'}:</strong> ${msg.message}</p>
+          <p><strong>Art der Partnerschaft:</strong> ${msg.type}</p>
+          ${msg.type === 'Gruppe' ? `<p><strong>Gruppe Größe:</strong> ${msg.groupSize}</p>` : ''}
+          <p><strong>Wann:</strong> ${msg.date}, Uhrzeit: ${msg.time}</p>
+          <button class="delete-button" data-index="${index}">Löschen</button>
         `;
+
+        // Antworten rendern, falls vorhanden
+        if (msg.replies && msg.replies.length > 0) {
+          const repliesDiv = document.createElement('div');
+          repliesDiv.classList.add('replies-container');
+          msg.replies.forEach(reply => {
+            const replyEl = document.createElement('div');
+            replyEl.classList.add('reply');
+            replyEl.innerHTML = `<p><strong>${reply.author} antwortet:</strong> ${reply.text}</p>`;
+            repliesDiv.appendChild(replyEl);
+          });
+          messageEl.appendChild(repliesDiv);
+        }
 
         messagesContainer.appendChild(messageEl);
       });
@@ -63,6 +77,36 @@ import Layout from '../layouts/Layout.astro';
       // Speichern der Nachrichten in localStorage
       localStorage.setItem('messages', JSON.stringify(messages));
     }
+
+    // Funktion zum Speichern einer Nachricht
+    function saveMessage(title, message, type, date, time) {
+      const newMessage = {
+        title,
+        message,
+        type,
+        date,
+        time,
+        replies: []  // Array für Antworten initialisieren
+      };
+      messages.push(newMessage);
+      renderMessages();
+    }
+
+    // Funktion zum Löschen einer Nachricht
+    function deleteMessage(index) {
+      messages.splice(index, 1);
+      renderMessages();
+    }
+
+    // Event-Listener für die Löschen-Buttons
+    messagesContainer.addEventListener('click', function(e) {
+      if (e.target.classList.contains('delete-button')) {
+        const index = e.target.getAttribute('data-index');
+        if (confirm('Sind Sie sicher, dass Sie diese Nachricht löschen möchten?')) {
+          deleteMessage(index);
+        }
+      }
+    });
 
     // Filter für die Suchfunktion
     function filterMessages(query) {
@@ -106,33 +150,34 @@ import Layout from '../layouts/Layout.astro';
         window.history.back();  // Gehe zur vorherigen Seite
       });
     }
-
     renderMessages();
   });
 </script>
 
+
 <style>
   :root {
     --background-main: #f4f6f9;
-    --text-dark: #333;
-    --button-background: #007BFF;
-    --button-hover: #0056b3;
+    --text-dark: #242424;
+    --button-background: #;
+    --button-hover: #0064B2;
     --button-text: #fff;
-    --main-background: #fff;
+    --main-background: #e6f1fa;
     --header-bg: #fff;
     --footer-bg: #f4f6f9;
     --message-background: #fff;
-    --message-border: #ddd;
-    --reply-background: #f4f4f4;
-    --reply-border: #ddd;
-    --delete-button-background: #dc3545;
-    --delete-button-hover: #c82333;
-    --reply-button-background: #28a745;
-    --reply-button-hover: #218838;
-    --back-button-background: #007BFF;
-    --back-button-hover: #0056b3;
-    --search-background: #f0f0f0;
-    --search-border: #ddd;
+    --message-border: #2b2929;
+    --delete-button-background: #e04141;
+    --delete-button-hover: #ee6c79;
+    --back-button-background: #00246B;
+    --back-button-hover: #0064B2;
+    --search-background: #fff;
+    --search-border: #101111;
+  }
+
+  h1 {
+    color: #00246B;
+    margin-left: 33px;
   }
 
   body {
@@ -151,11 +196,6 @@ import Layout from '../layouts/Layout.astro';
     box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
   }
 
-  header h1 {
-    margin: 0;
-    font-size: 24px;
-  }
-
   nav a {
     color: var(--button-background);
     text-decoration: none;
@@ -163,23 +203,23 @@ import Layout from '../layouts/Layout.astro';
   }
 
   main {
-    padding: 1.5rem;
+    padding: 2.5rem;
     width: 100%;
     max-width: 600px;
-    color: rgb(11 11 11);
     font-size: 16px;
     line-height: 1.6;
     position: relative;
     background: var(--main-background);
-    border-radius: 12px;
-    box-shadow: 0 6px 12px rgb(0 0 0 / 10%);
-    margin: 2rem auto;
+    border-radius: 20px;
+    box-shadow: 0 9px 12px rgb(0 0 0 / 40%);
+    margin: 3rem auto;
   }
 
   #button-container {
     display: flex;
     justify-content: space-between;
     margin-bottom: 1rem;
+    margin-left: 15px;
   }
 
   #search-container {
@@ -193,6 +233,7 @@ import Layout from '../layouts/Layout.astro';
   }
 
   #search-input {
+    margin-right: 210px;
     padding: 0.5rem;
     border-radius: 8px;
     border: 1px solid var(--search-border);
@@ -204,47 +245,27 @@ import Layout from '../layouts/Layout.astro';
 
   #messages-container {
     border: none;
-    background: var(--main-background);
-    padding: 1rem;
+    background-color: #e6f1fa;
+    padding: 2rem;
     max-height: 500px;
     overflow-y: auto;
   }
 
   .message {
-    margin-bottom: 1rem;
+    position: relative;
     padding: 1rem;
-    border-radius: 8px;
     background: var(--message-background);
     border: 1px solid var(--message-border);
-    box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    padding-left: 4rem; /* Add space for the delete button */
   }
 
   .message:last-child {
     margin-bottom: 0;
   }
 
-  .replies {
-    margin-top: 1rem;
-    padding-left: 1rem;
-    border-left: 2px solid var(--message-border);
-  }
-
-  .reply {
-    margin-top: 0.5rem;
-    padding: 0.5rem;
-    border-radius: 8px;
-    background: var(--reply-background);
-    border: 1px solid var(--reply-border);
-  }
-
-  .reply strong {
-    color: var(--text-dark);
-  }
-
-  .reply-button,
-  .delete-button,
-  #search-button,
-  #clear-button {
+  #search-button, #clear-button {
     padding: 0.75rem 1.5rem;
     border: none;
     border-radius: 8px;
@@ -253,27 +274,10 @@ import Layout from '../layouts/Layout.astro';
     transition: background 0.3s ease;
   }
 
-  .reply-button {
-    background: var(--reply-button-background);
-    color: var(--button-text);
-  }
-
-  .reply-button:hover {
-    background: var(--reply-button-hover);
-  }
-
-  .delete-button {
-    background: var(--delete-button-background);
-    color: var(--button-text);
-  }
-
-  .delete-button:hover {
-    background: var(--delete-button-hover);
-  }
-
   #search-button {
-    background: var(--button-background);
-    color: var(--button-text);
+    background-color: #00246B;
+    margin-left: 20px;
+    color: white;
   }
 
   #search-button:hover {
@@ -282,6 +286,7 @@ import Layout from '../layouts/Layout.astro';
 
   #clear-button {
     background: var(--delete-button-background);
+    margin-right: 33px;
     color: var(--button-text);
   }
 
@@ -296,12 +301,14 @@ import Layout from '../layouts/Layout.astro';
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.5rem 1rem;
+    margin-right: 58px;
+    margin-bottom: 33px;
+    padding: 0.5rem;
     background: var(--back-button-background);
     color: var(--button-text);
     border: none;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
+    box-shadow: 0 2px 4px rgb(0 0 0 / 40%);
     cursor: pointer;
     transition: background 0.3s ease, transform 0.3s ease;
   }

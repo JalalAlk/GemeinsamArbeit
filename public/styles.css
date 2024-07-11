@@ -1,38 +1,33 @@
 /* Allgemeine Seite-Stile */
+
 main {
-    margin: auto;
-    padding: 1rem;
-    width: 100%;
-    max-width: 900px;
-    color: #060606;
-    font-size: 16px;
-    line-height: 1.5;
-    position: relative;
-    background-color: #f4f6f9; /* Hintergrundfarbe für die Seite */
-  }
-  
+  margin: auto;
+  padding: 1rem;
+  width: auto; /* Set a fixed width */
+  max-width: auto; /* Ensures the width doesn't exceed the viewport width */
+  color: #060606;
+  font-size: 16px;
+  line-height: 1.5;
+  position: relative;
+  background-color:  #FFFFFF; /* Hintergrundfarbe für die Seite */
+}
+
   /* Stile für den Optionsbereich */
   .options-bar {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #003365; /* Dunkelblauer Hintergrund */
+    background-color:  #0064B2; /* Dunkelblauer Hintergrund */
     padding: 0.5rem 1rem;
-    border-radius: 12px;
-    margin-bottom: 1rem;
-    color: #f4f6f9;
-  }
-  
-  .options-bar .logo {
-    position: absolute;
-    left: 1rem;
-    font-size: 1.2rem;
-    color: #f4f6f9;
+    border-radius: 0px;
+    margin-bottom: 0rem;
+    color:  #0064B2;
   }
   
   .options-bar .button-container {
     display: flex;
     gap: 1rem; /* Abstand zwischen den Buttons */
+    margin: 1rem; /* Abstand um die Button-Box herum */
   }
   
   .options-bar a {
@@ -40,34 +35,46 @@ main {
     padding: 0.75rem 1.25rem;
     color: #fefdfd; /* Weiße Schriftfarbe */
     text-decoration: none;
-    background: linear-gradient(to right, rgb(31 48 89), rgb(6 40 86)); /* Blauer Farbverlauf */
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgb(0 0 0 / 20%);
+    background: #0064B2; /* Farbe der Schaltfläche */
+    border-radius: 0px;
     transition: background 0.3s ease, transform 0.3s ease;
   }
   
   .options-bar a:hover {
-    background: rgb(25 48 85); /* Etwas dunklerer Blauton bei Hover */
+    background: #00246B; /* Etwas dunklerer Blauton bei Hover */
     transform: scale(1.05); /* Vergrößerungseffekt */
+  }
+
+  .options-bar .logo {
+    position: absolute;
+    left: 1rem; /* Abstand vom linken Rand */
+    font-size: 1.2rem;
+    color: #f4f6f9;
+    font-weight: bold;
   }
   
   #responses-container {
-    border: 1px solid #ddd;
+    margin: auto;
+    border: 2px solid #3a70dd;
     border-radius: 8px;
     padding: 0.5rem;
-    background: #f9f9f9;
-    max-height: 500px;
+    background-color: white;
+    max-height: 700px;
+    max-width: 900px;
     overflow-y: auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Schatten mit 10px Weichheit */
   }
   
   #responses {
     list-style-type: none;
+    box-shadow: 0 0 100px rgba(0, 0, 0, 0.2); /* Schatten mit 10px Weichheit */
+
     padding: 0;
     margin: 0;
   }
   
   .message-item {
-    border-bottom: 1px solid rgb(0 0 0 / 10%);
+    border-bottom: 10px solid #00000000;
     padding: 0.5rem;
   }
   
@@ -78,26 +85,26 @@ main {
   .message {
     padding: 1rem;
     border-radius: 8px;
-    background: #fff;
+    background: white;
     margin-bottom: 1rem;
     box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
   }
   
   .message h2 {
     margin: 0;
-    font-size: 1.2rem;
-    color: #333;
+    font-size: "bold" 1.2rem;
+    color: #0e0d0d;
   }
   
   .message p {
     margin: 0.5rem 0;
-    color: #555;
+    color: #0e0d0d;
   }
   
   .message span {
     display: block;
     font-size: 0.9rem;
-    color: #777;
+    color: #424242;
   }
   
   .button-container1 {
@@ -106,8 +113,8 @@ main {
   
   .reply-button {
     padding: 0.5rem;
-    background: linear-gradient(to right, rgb(233 241 239), rgb(177 228 160));
-    color: #070606;
+    background-color: #186e48;    
+    color: #ffffff;
     border: none;
     border-radius: 8px;
     font-size: 1rem;
@@ -117,71 +124,48 @@ main {
   }
   
   .reply-button:hover {
-    background: rgb(145 190 130);
+    background: #1f8658;
   }
   
   .delete-button {
-    background: #e9dad8;
+    background: #e04141;
     color: #070606;
     border: none;
-    border-radius: 8px;
-    padding: 0.5rem 1rem;
+    border-radius: 3px;
+    padding: 0.2rem 0.5rem;
     font-size: 1rem;
     cursor: pointer;
     transition: background 0.3s ease;
-    margin-right: 0.5rem;
-  }
+    /*margin-left: 423px;*/
+  } 
   
   .delete-button:hover {
-    background: #f1e5e3;
+    background: #e96969;
   }
   
   .interested-button {
-    background: #17a2b8;
-    color: #fff;
+    padding: 0.62rem 1rem;
+    background-color: #00246B;
+    color: #ffffff;
     border: none;
     border-radius: 8px;
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    cursor: pointer;
-    margin-left: 0.5rem;
-    transition: background 0.3s ease;
-  }
-  
-  .interested-button:hover {
-    background: #117a8b;
-  }
-  
-  .no-messages {
-    color: #777;
-    font-style: italic;
-    text-align: center;
-    padding: 1rem;
-  }
-  
-  #back-button {
-    position: absolute;
-    bottom: 1rem;
-    right: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem 1rem;
-    background: linear-gradient(to right, rgb(231 238 231), rgb(13 6 6));
-    color: hsl(0deg 7% 3%);
-    border: none;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
     cursor: pointer;
     transition: background 0.3s ease, transform 0.3s ease;
   }
   
-  #back-button:hover {
-    background: rgb(133 130 190);
-    transform: translateY(-2px);
+  .interested-button:hover {
+    background: #1287e0;
   }
   
-  #back-button svg {
-    fill: currentcolor;
+  .interested-active {
+    background: #0064B2;
   }
+  
+  .no-messages {
+    color: #272727;
+    font-style: italic;
+    text-align: center;
+    padding: 1rem;
+  }
+
   

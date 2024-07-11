@@ -14,23 +14,20 @@ const { title, description } = Astro.props;
 </head>
 <body>
   <header>
-    <div class="logo">Feedback System</div>
   </header>
   
   <!-- Options Bar hinzugefügt -->
+
   <div class="options-bar">
+    <div class="logo">GroupStudy</div>
+    <a href="/startseite" class="button-lernpartner">StartSeite</a>
     <a href="/lernpartner" class="button-lernpartner">Lernpartner</a>
     <a href="/nachrichten">Mein Nachrichten</a>
     <a href="/antworten">Antworten</a>
-
   </div>
   
   <main>
     <slot />
   </main>
-  
-  <footer>
-    © 2024 HTW
-  </footer>
 </body>
 </html>

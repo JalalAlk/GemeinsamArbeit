@@ -4,17 +4,134 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout title="Startseite" description="Willkommen auf der Startseite">
   <div class="startseite-container">
-    <div class="startseite-text">
-      <p>
-        Willkommen auf unserer Seite für Studenten!
-
-        Liebe Studentinnen und Studenten,
-
-        Herzlich willkommen auf unserer Plattform, die speziell darauf ausgerichtet ist, euch während eures akademischen Weges zu unterstützen und zu begleiten. Wir freuen uns sehr, dass ihr euch entschieden habt, Teil unserer Community zu werden.
-      </p>
+    <div class="startseite-section reverse">
+      <div class="startseite-text">
+        <h2>Willkommen auf unserer 'GroupStudy' Seite für Studenten.</h2>
+        <p>
+          Liebe Studentinnen und Studenten,
+          Herzlich willkommen auf unserer Plattform, die speziell darauf ausgerichtet ist, euch während eures akademischen Weges zu unterstützen und zu begleiten. 
+          Wir freuen uns sehr, dass ihr euch entschieden habt, Teil unserer Community zu werden.
+        </p>
+        <p>Unsere Seite ermöglicht es euch, eine Lerngruppe oder einen Lernpartner zu finden.</p>
+        <p style="color: black;">&copy; Gemeinsames Arbeiten an der HTW</p>
+      </div>
+      <div class="startseite-image">
+        <img src="https://www.htwsaar.de/hochschule/arbeiten-an-der-htw-saar/arbeiten-an-der-htw-saar/@@images/headerimage/fullhd" alt="HTW Saar Bild" />
+      </div>
     </div>
-    <div class="startseite-image">
-      <img src="https://www.htwsaar.de/hochschule/arbeiten-an-der-htw-saar/arbeiten-an-der-htw-saar/@@images/headerimage/fullhd" alt="HTW Saar Bild" />
+    
+    <div class="startseite-section">
+      <div class="startseite-text">
+        <h2>Über GroupStudy</h2>
+        <p>
+          GroupStudy bietet euch die Möglichkeit, effektiv zusammenzuarbeiten und voneinander zu lernen. Findet die passende Lerngruppe oder den idealen Lernpartner für eure Bedürfnisse. Egal ob ihr euch auf Prüfungen vorbereitet oder an Projekten arbeitet, bei uns findet ihr die Unterstützung, die ihr benötigt.
+        </p>
+        <p style="color: black;">&copy; Gemeinsames Arbeiten an der HTW</p>
+      </div>
+      <div class="startseite-image">
+        <img src="https://www.htwsaar.de/studium-und-lehre/service-und-beratung/rund-ums-studium/bibliothek/service/oeffnungszeiten/@@images/headerimage/fullhd" alt="Bibliothek Bild" />
+      </div>
+    </div>
+
+    
+    <!-- Neue Sektion für die zusätzlichen Bilder -->
+    <div class="additional-images-section">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqZnd_SC3qI6MGNSu-mT8S_EcR3uEj9LJXMQ&s" alt="Bild 1" />
+      <img src="https://www.htwsaar.de/en/studying-living/fields-of-study/master/international-management/@@images/headerimage/fullhd" alt="Bild 2" />
+      <img src="https://www.htwsaar.de/frontpage/jetzt-fuers-wintersemester-bewerben/@@images/headerimage/fullhd" alt="Bild 3" />
+      <img src="https://www.stw-saarland.de/_cms/1/attachment/9799_58b0b781ef235fa4a507c724d2237dd2.jpg" alt="Bild 4" />
+      <img src="https://www.htwsaar.de/stories/htw-saar-stories/@@images/headerimage/fullhd" alt="Bild 5" />
     </div>
   </div>
+  <footer>
+
+    <p>This page Were Developed by "MJORAQ" Group.</p>  
+    <p>&copy; Gemeinsames Arbeiten an der HTW</p>
+
+  </footer>
+
 </Layout>
+
+<style>
+body {
+    background: var(--background-main);
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+footer {
+  text-align: center;
+  padding: 20px; /* Beispiel-Padding für den Footer */
+}
+
+footer p {
+  font-family: Arial, sans-serif;
+  color: black; /* Schriftfarbe für den Text im Footer */
+}
+
+.startseite-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.startseite-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: #f9f9f9; /* Optional: Hintergrundfarbe für mehr Kontrast */
+  padding: 0.5rem;
+  border-radius: 8px;
+}
+
+.startseite-section.reverse {
+  flex-direction: row-reverse; /* Bild auf der rechten Seite */
+}
+
+.startseite-text {
+  color: #107fd4;
+  flex: 1;
+  font-size: 1.25rem;
+  text-align: left;
+  padding-right: 20px; /* Füge hier den gewünschten Abstand hinzu */
+  padding-left: 20px; /* Füge hier den gewünschten Abstand hinzu */
+}
+
+.startseite-image {
+  padding: auto;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.startseite-image img {
+  max-width: 80%;
+  height: auto;
+  display: block;
+  border-radius: 9px; /* Abgerundete Ecken */
+  transition: transform 0.3s ease-in-out; /* Animationsübergang für Zoom */
+}
+
+.additional-images-section {
+  display: flex;
+  justify-content: center;
+  gap: 4.7rem; /* Abstand zwischen den Bildern */
+}
+
+.additional-images-section img {
+  max-width: 300px;
+  height: auto;
+  display: block;
+  border-radius: 8px; /* Abgerundete Ecken */
+  box-shadow: 0 4px 8px rgb(0 0 0 / 10%); /* Optional: Schatten für professionellen Look */
+  transition: transform 0.3s ease-in-out; /* Animationsübergang für Zoom */
+}
+
+.additional-images-section img:hover {
+  transform: scale(1.05); /* Vergrößern um 5% bei Hover */
+}
+</style>

@@ -1,31 +1,67 @@
 ---
 import Layout from '../layouts/Layout.astro';
-
 ---
 
-  <div class="container">
-    <main>
-      <h1>Login</h1>
-      <form action="/startseite">
+<div class="container">
+  <main>
+    <h1>Log-in</h1>
+    <form action="/startseite">
+      <div class="input-container">
         <label for="username">Benutzername</label>
-        <input type="text" id="username" name="username" required />
-        
+        <div class="input-with-icon">
+          <input type="text" id="username" name="username" required />
+          <span class="icon">&#128100;</span> 
+        </div>
+      </div>
+      
+      <div class="input-container">
         <label for="password">Passwort</label>
-        <input type="password" id="password" name="password" required />
-        
-        <button type="submit">Login</button>
-      </form>
-    </main>
-    <footer>
-      <p>© 2024 Feedback-System</p>
-    </footer>
+        <div class="input-with-icon">
+          <input type="password" id="password" name="password" required />
+          <span class="icon">&#128274;</span> 
+        </div>
+      </div>
+      
+      <button type="submit">Login</button>
+    </form>
+    <div class="options">
+      <a href="#" id="forgot-password-link">Passwort vergessen?</a>
+      <a href="/startseite">Als Gast anmelden</a>
+    </div>
+  </main>
+  <footer>
+    <p style="color: black;">&copy; Gemeinsames Arbeiten An Der HTW</p>
+    <p style="color: black;">BY 'MJORAQ' GROUP</p>
+  </footer>
+</div>
+
+<div id="forgot-password-modal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Passwort zuruecksetzen</h2>
+    <form id="/index" onsubmit="return resetPassword(event)">
+      <div class="input-container">
+        <label for="reset-username">Benutzername</label>
+        <input type="text" id="reset-username" name="reset-username" required />
+      </div>
+      <div class="input-container">
+        <label for="new-password">Neues Passwort</label>
+        <input type="password" id="new-password" name="new-password" required />
+      </div>
+      <div class="input-container">
+        <label for="confirm-password">Passwort bestaetigen</label>
+        <input type="password" id="confirm-password" name="confirm-password" required />
+      </div>
+      <button type="submit">Passwort zuruecksetzen</button>
+    </form>
   </div>
-</Layout>
+</div>
+
 
 <style>
 body {
   font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #a2c2e0, #f0f4f8);
+  background: linear-gradient(184deg, #94cefa, #deedfc);
   color: #333;
   margin: 0;
   padding: 0;
@@ -48,10 +84,10 @@ body {
 }
 
 main {
-  background: #fff;
+  background: #e6f1fa;
   padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgb(0 0 0 / 10%);
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgb(0 0 0 / 20%);
   width: 100%;
 }
 
@@ -69,34 +105,53 @@ form {
   gap: 1rem; 
 }
 
+.input-container {
+  position: relative;
+}
+
+.input-with-icon {
+  display: flex;
+  align-items: center;
+}
+
+.input-with-icon input {
+  width: 100%;
+  padding-left: 2rem; 
+}
+
+.input-with-icon .icon {
+  position: absolute;
+  left: 0.75rem;
+  color: #666;
+}
+
 label {
   font-size: 0.9rem; 
-  color: #555;
+  color: #363636;
 }
 
 input[type="text"],
 input[type="password"] {
   width: 100%;
   padding: 0.75rem;
-  border: 1px solid #19242b;
+  border: 2px solid #fff;
   border-radius: 6px;
   font-size: 0.9rem;
-  color: #333;
+  color: #fffcfc;
   box-sizing: border-box;
   outline: none;
 }
 
-
 input[type="text"]:focus,
 input[type="password"]:focus {
-  border-color: #7abaff; 
+  border-color: #217cc2; 
   box-shadow: 0 0 0 2px rgb(122 186 255 / 20%); 
 }
 
 button {
   width: 100%;
   padding: 0.75rem;
-  background: #141c27; 
+  background: #217cc2; 
   color: #fff;
   border: none;
   border-radius: 6px;
@@ -107,10 +162,25 @@ button {
 }
 
 button:hover {
-  background: #357abd; 
+  background: #6fafee; 
   box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
 }
 
+.options {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.options a {
+  color: #217cc2;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.options a:hover {
+  text-decoration: underline;
+}
 
 footer {
   position: absolute;
@@ -122,4 +192,114 @@ footer p {
   font-size: 0.9rem;
   text-align: center;
 }
+
+
+.modal {
+  display: none; 
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0 0 0);
+  background-color: rgb(0 0 0 / 40%);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 400px;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgb(0 0 0 / 20%);
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal h2 {
+  margin-top: 0;
+}
+
+.modal form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.modal form input {
+  padding: 0.75rem;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+.modal form button {
+  padding: 0.75rem;
+  background: #217cc2;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.modal form button:hover {
+  background: #6fafee;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
+}
 </style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const forgotPasswordLink = document.getElementById("forgot-password-link");
+  forgotPasswordLink?.addEventListener("click", function(event) {
+    event.preventDefault();
+    const modal = document.getElementById("forgot-password-modal");
+    modal.style.display = "flex";
+  });
+
+  const closeModal = document.querySelector(".close");
+  closeModal?.addEventListener("click", function() {
+    const modal = document.getElementById("forgot-password-modal");
+    modal.style.display = "none";
+  });
+
+  window.addEventListener("click", function(event) {
+    const modal = document.getElementById("forgot-password-modal");
+    if (event.target === modal) {
+      modal.style.display = "none";
+    }
+  });
+
+  // Event listener for the reset password form
+  const resetPasswordForm = document.getElementById("reset-password-form");
+  resetPasswordForm?.addEventListener("submit", function(event) {
+    event.preventDefault();
+    // Simulate a successful password reset
+    setTimeout(() => {
+      alert("Passwort erfolgreich zurückgesetzt");
+      window.location.href = "/login"; // Redirect to login page
+    }, 1000);
+  });
+});
+</script>
