@@ -12,9 +12,8 @@ Zurück
     const searchContainer = document.getElementById('search-container');
     const searchInput = document.getElementById('search-input');
 
-    // Funktion zum Rendern der Nachrichten
     function renderMessages(filteredMessages = messages) {
-      if (!messagesContainer) return; // Sicherheitsüberprüfung
+      if (!messagesContainer) return;
 
       messagesContainer.innerHTML = '';
 
@@ -30,7 +29,6 @@ Zurück
           <button class="delete-button" data-index="${index}">Löschen</button>
         `;
 
-        // Antworten rendern, falls vorhanden
         if (msg.replies && msg.replies.length > 0) {
           const repliesDiv = document.createElement('div');
           repliesDiv.classList.add('replies-container');
@@ -46,14 +44,11 @@ Zurück
         messagesContainer.appendChild(messageEl);
       });
 
-      // Scrollen zum neuesten Eintrag
       messagesContainerWrapper.scrollTop = messagesContainerWrapper.scrollHeight;
 
-      // Speichern der Nachrichten in localStorage
       localStorage.setItem('messages', JSON.stringify(messages));
     }
 
-    // Funktion zum Speichern einer Nachricht
     function saveMessage(title, message, type, date, time) {
       const newMessage = {
         title,
@@ -61,19 +56,17 @@ Zurück
         type,
         date,
         time,
-        replies: []  // Array für Antworten initialisieren
+        replies: []  
       };
       messages.push(newMessage);
       renderMessages();
     }
 
-    // Funktion zum Löschen einer Nachricht
     function deleteMessage(index) {
       messages.splice(index, 1);
       renderMessages();
     }
 
-    // Event-Listener für die Löschen-Buttons
     messagesContainer.addEventListener('click', function(e) {
       if (e.target.classList.contains('delete-button')) {
         const index = e.target.getAttribute('data-index');
@@ -83,7 +76,6 @@ Zurück
       }
     });
 
-    // Filter für die Suchfunktion
     function filterMessages(query) {
       return messages.filter(msg =>
         msg.title.toLowerCase().includes(query.toLowerCase()) ||
@@ -91,14 +83,12 @@ Zurück
       );
     }
 
-    // Such-Button Funktion
     if (searchButton) {
       searchButton.addEventListener('click', () => {
         searchContainer.classList.toggle('hidden');
       });
     }
 
-    // Eingabefeld für die Suchfunktion
     if (searchInput) {
       searchInput.addEventListener('input', () => {
         const query = searchInput.value;
@@ -107,7 +97,6 @@ Zurück
       });
     }
 
-    // Leeren-Button Funktion
     if (clearButton) {
       clearButton.addEventListener('click', () => {
         if (confirm('Sind Sie sicher, dass Sie alle Nachrichten löschen möchten?')) {
@@ -119,10 +108,9 @@ Zurück
       });
     }
 
-    // Zurück-Button Funktion
     if (backButton) {
       backButton.addEventListener('click', () => {
-        window.history.back();  // Gehe zur vorherigen Seite
+        window.history.back();  
       });
     }
     renderMessages();
