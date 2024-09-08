@@ -12,22 +12,25 @@ jobs:
     permissions:
       contents: write
     steps:
+      # Checkout the repository
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          submodules: true  # Fetch submodules if any
-          fetch-depth: 0    # Fetch all history
+          fetch-depth: 0    # Fetch all history to allow full context
 
+      # Set up Node.js environment
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: 'lts/*'  # Set Node.js version to lts/*
+          node-version: 'lts/*'  # Use latest LTS version of Node.js
 
+      # Install dependencies and browsers for testing
       - name: Install dependencies and Playwright browsers
         run: |
           npm install
           npx playwright install --with-deps
 
+      # Run linters and tests before building
       - name: Run ESLint
         run: npx eslint .
 
@@ -40,21 +43,22 @@ jobs:
       - name: Run Astro Lint
         run: npx astro lint
 
-      - name: Build and Test
+      # Build the project
+      - name: Build Astro project
         run: |
-          npm run build
-          npm run test
-          echo "Deploying..."
+          npm run build  # Build the project using the build script in package.json
           npx astro build
-          touch dist/.nojekyll
-          ls -la dist || echo "Directory not found"
+          touch dist/.nojekyll  # Prevent Jekyll processing on GitHub Pages
+          ls -la dist  # List contents of the build folder to check
 
+      # Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
-        if: github.ref == 'refs/heads/main'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist  # Directory to deploy
+          publish_branch: gh-pages  # Deploy to the gh-pages branch
 
+      # Run Playwright tests after deployment
       - name: Run Playwright tests
         run: npx playwright test
