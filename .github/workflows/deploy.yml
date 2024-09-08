@@ -52,20 +52,8 @@ jobs:
           touch dist/.nojekyll
           ls -la dist || echo "Directory not found"
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist  # Directory to deploy
-          publish_branch: gh-pages  # Specify the branch to publish to
-          user_name: 'github-actions[bot]'
-          user_email: 'github-actions[bot]@users.noreply.github.com'
-
-      - name: Run Playwright tests
-        run: npx playwright test
-
       deploy:
-    needs: build
+      needs: build
     runs-on: ubuntu-latest
     environment:
       name: github-pages
@@ -74,3 +62,5 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      
