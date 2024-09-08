@@ -40,21 +40,18 @@ jobs:
       - name: Run Astro Lint
         run: npx astro lint
 
-      - name: Build project
-        run: npm run build
-
-      - name: Run tests
-        run: npm run test
-
-      - name: Prepare deployment
+      - name: Build and Test
         run: |
+          npm run build
+          npm run test
+          echo "Deploying..."
           npx astro build
           touch dist/.nojekyll
           ls -la dist || echo "Directory not found"
 
       - deploy:
-        needs: build
-        runs-on: ubuntu-latest
+    needs: build
+    runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -65,5 +62,3 @@ jobs:
 
       - name: Run Playwright tests
         run: npx playwright test
-
-      
