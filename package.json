@@ -24,7 +24,7 @@
   "devDependencies": {
     "@playwright/test": "^1.44.1",
     "@types/node": "^20.14.2",
-    "astro": "^4.11.5",
+    "astro": "^4.15.4",
     "astro-eslint-parser": "^1.0.2",
     "concurrently": "^8.0.1",
     "eslint": "^9.4.0",
